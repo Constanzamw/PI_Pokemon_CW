@@ -9,7 +9,7 @@ const getPokemons = async () => { // req res
         let allPokemons = [];
         let endpoint = baseUrl;
     
-        while (allPokemons.length < 60) {
+        while (allPokemons.length < 60) { // 60 por pedido a api
           const response = await axios.get(endpoint);
           allPokemons.push(...response.data.results);
           endpoint = response.data.next;

@@ -2,19 +2,25 @@ const axios = require ("axios")
 const {Type} = require("../db")
 
 const getTypes = async () =>{
-   
-    const response = await axios("https://pokeapi.co/api/v2/type");
 
-    const allTypes =  response.data.results.map(type => ({
-     id: parseInt(type.url.split("/").at(-2)),
-     name:type.name   
-    }));
+  let types = await Type.findAll();  //db
+  
+  if(types.length === 0){
+    const response = await axios.get("https://pokeapi.co/api/v2/type");
+    const apiTypes = response.data.results;
 
-      await Type.bulkCreate(allTypes);
-     // console.log(allTypes)  
-      return allTypes;
-    
+    for(let apiTypes of apiTypes){
+      await Type.create({name: apiTypes.name});
+    }
 
+    types = await Type.findAll() // datos actualizados
+  
+  }
+
+   return types;
+
+
+ 
 };
 
 

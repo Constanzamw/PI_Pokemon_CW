@@ -12,3 +12,5 @@ const getTypesHandler = async (req,res)=>{
 
 
 module.exports= getTypesHandler;
+
+
