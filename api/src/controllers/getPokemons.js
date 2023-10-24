@@ -3,7 +3,7 @@ const getData = require ("../utils/getData")
 
 const baseUrl = "https://pokeapi.co/api/v2/pokemon/";
 
-const getPokemons = async (req,res) => {
+const getPokemons = async () => { // req res 
 
       
         let allPokemons = [];
