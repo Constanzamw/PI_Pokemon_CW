@@ -23,4 +23,3 @@ const Landing = () => {
 
 export default Landing;
 
-//style={{ backgroundImage: `url(${pokeLandingImage})` }} 

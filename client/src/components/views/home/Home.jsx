@@ -1,21 +1,32 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 /* Estilos */
 import style from "./Home.module.css";
 /*Dependencias */
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector} from "react-redux"
+/*Componentes */
 import SearchBar from "../../searchBar/SearchBar";
 import Cards from "../../cards/Cards"
-
-/*Componentes */
-
-
-
+import { getPokemons } from "../../../reudx/actions/actions";
 
 
 const  Home = () => {
+  const dispatch = useDispatch();
+
+  let allPokemons = useSelector((state)=>state.allPokemons)
+  
+
+  useEffect(()=>{
+    dispatch(getPokemons())
+  },[dispatch])
+
+
+
+
   return (
     <div >
-        <h1>Home Page</h1>
-        <SearchBar />
+  
         <Cards />
         
     </div>
