@@ -2,11 +2,12 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 /* Estilos */
-import './Detail.module.css';
+import style from "./Detail.module.css";
 /* Dependencias */
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams,Link } from 'react-router-dom';
+
 /* Componentes */
 import { pokemonDetail, cleanDetail } from '../../../reudx/actions/actions';
 
@@ -24,24 +25,45 @@ const  Detail = () => {
   },[dispatch,id])
 
   return (
-    <div >
-      <img src={pokemonDetailData?.image} />
-      <h1>{pokemonDetailData?.name}</h1>   
-      <label> Types: </label>
-      <p>{pokemonDetailData?.types}</p> 
-      <label> Life: </label>
-      <p>{pokemonDetailData?.life}</p> 
-      <label> Attack: </label>
-      <p>{pokemonDetailData?.attack}</p> 
-      <label> Defense: </label>
-      <p>{pokemonDetailData?.defense}</p> 
-      <label> Speed: </label>
-      <p>{pokemonDetailData?.speed}</p> 
-      <label> Height: </label>
-      <p>{pokemonDetailData?.height}</p> 
-      <label> Weight: </label>
-      <p>{pokemonDetailData?.weight}</p> 
+    <div className={style.container}>
+      <div>
+      <button>
+        <Link to="/home" > X </Link>
+      </button>
+      <div className={style.card}>
+        <img src={pokemonDetailData?.image} />
+        <h1>{pokemonDetailData?.name}</h1>   
+        <div className={style.info}>
 
+        <label> Types: </label>
+        <p>{pokemonDetailData?.types}</p> 
+
+        <label> Life: </label>
+
+         <span>{pokemonDetailData?.life}</span>
+         <br/><br/>
+
+        <label> Attack: </label>
+        <span>{pokemonDetailData?.attack}</span>
+        <br/><br/>
+
+        <label> Defense: </label>
+        <span>{pokemonDetailData?.defense}</span>
+        <br/><br/>
+
+        <label> Speed: </label>
+        <span>{pokemonDetailData?.speed}</span> 
+        <br/><br/>
+
+        <label> Height: </label>
+        <span>{pokemonDetailData?.height}</span>
+        <br/><br/>
+        
+        <label> Weight: </label>
+        <span>{pokemonDetailData?.weight}</span>
+      </div>
+      </div>
+      </div>
     </div>
   );
 }

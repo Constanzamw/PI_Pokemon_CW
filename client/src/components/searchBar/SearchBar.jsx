@@ -1,18 +1,34 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 /* Estilos */
 //import './Nav.module.css';
 
 /*Dependencias */
-//import { UseLocation, Route, Routes  } from "react-router-dom"
+import { useState } from "react";
 
 /*Componentes */
 //import Button from "../button/Button"
 
 
-const SearchBar = () => {
+const SearchBar = ({ onSearch }) => {
+
+  const [searchText, setSearchText] = useState("");
+
+  const handleSearch = () => {
+    onSearch(searchText);
+  };
+
+
+  
   return (
     <div >
-      <h1> SearchBar </h1>
+      <input
+        type="text"
+        placeholder="Search"
+        value={searchText}
+        onChange={(event) => setSearchText(event.target.value)}
+      />
+      <button onClick={handleSearch}>Search</button>
      
     </div>
   );

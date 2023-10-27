@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
-import { CLEAN_DETAIL, GET_POKEMONS, POKEMON_DETAIL } from "../actions/action-types";
+import { CLEAN_DETAIL, GET_POKEMONS, POKEMON_DETAIL, FILTER_TYPES, ORDER_AZ, CLEAR_TYPES } from "../actions/action-types";
 
 const initialState ={
     allPokemons: [],
-    filterPokemon:[], // mi aux
+    filterPokemon:[],
     pokemonDetail:{}
 }
 
@@ -14,7 +14,7 @@ const reducer = (state = initialState, action) =>{
             return{
                 ...state,
                 allPokemons: action.payload,
-                filterPokemon: action.payload
+                
             }
         case POKEMON_DETAIL:
             return{
@@ -26,6 +26,24 @@ const reducer = (state = initialState, action) =>{
                 ...state,
                 pokemonDetail:{}
             }
+        case FILTER_TYPES:
+            
+            return{
+                ...state,
+                filterPokemon: action.payload
+            }
+            case CLEAR_TYPES:
+                return {
+                    ...state,
+                    filterPokemon: []
+                };  
+            case ORDER_AZ:
+                return{
+                    ...state,
+                    allPokemons: action.payload
+
+                }
+       
 
 
 

@@ -10,6 +10,7 @@ import { useLocation, Route, Routes  } from "react-router-dom"
 /*Componentes */
 import {Home,Detail, Create, Landing} from "./components/views"
 import Nav from './components/nav/Nav';
+import SearchBar from './components/searchBar/SearchBar';
 
 
 const App = () => {

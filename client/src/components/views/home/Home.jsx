@@ -6,9 +6,10 @@ import style from "./Home.module.css";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector} from "react-redux"
 /*Componentes */
-import SearchBar from "../../searchBar/SearchBar";
 import Cards from "../../cards/Cards"
+import Paginado from "../../paginado/Paginado";
 import { getPokemons } from "../../../reudx/actions/actions";
+import { all } from "axios";
 
 
 const  Home = () => {
@@ -22,12 +23,15 @@ const  Home = () => {
   },[dispatch])
 
 
-
-
   return (
     <div >
-  
-        <Cards />
+      
+      <Paginado />
+      
+      {/* <Cards 
+        allPokemons={allPokemons}
+      /> */}
+        
         
     </div>
   );

@@ -1,7 +1,8 @@
+/* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 /* Estilos */
-import './Card.module.css';
+import style from "./Card.module.css"
 
 /*Dependencias */
 import { useSelector } from 'react-redux';
@@ -15,17 +16,47 @@ const Card = ({id,name,image,types}) => {
 
   const allPokemons = useSelector((state)=> state.allPokemons)
 
+  const backgroundColorClass = types[0].toLowerCase();
+  
   return (
-    <div >
-      <h3> {id} </h3>   
+    <div className={`${style.container} ${style[backgroundColorClass]}`}>
+      <div className={style.topRight}>
+      <h3 className={style.id}> {id} </h3>
+      </div>
+      <h1 className={style.name}> {name}</h1>
+    <div className={style.imageContainer}>
       <Link to={`/detail/${id}`}>
-      <img src={image} alt={name} />
-      </Link>     
-      <h1> {name}</h1> 
-      <h2> {types} </h2> 
-       
+        <img className={style.image} src={image} alt={name} />
+      </Link>
     </div>
+    <div className={style.bottom}>
+      
+      <h2 className={style.types}> {types} </h2>
+    </div>
+  </div>
+  
   );
 }
 
 export default Card;
+
+/*
+
+  <div className={style.container} >
+      
+      <h3 className={style.id}> {id} </h3>  
+      <div className={style.imageContainer}>
+        <Link to={`/detail/${id}`}>
+         <img className={style.image} src={image} alt={name} />
+        </Link>  
+      </div>   
+      
+      <h1 className={style.name}> {name}</h1> 
+      <h2 className={style.types}> {types} </h2> 
+      
+     </div>
+
+
+
+
+*/
