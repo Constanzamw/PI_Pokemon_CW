@@ -10,6 +10,7 @@ import Card from "../card/Card";
 
 const Paginado = ()=>{
     const allPokemons = useSelector((state)=> state.allPokemons)
+    let filterPokemon= useSelector((state)=> state.filterPokemon)
   const [currentPage, setCurrentPage] = useState(0); // pagina
 
   let nextPage = () => {
@@ -37,7 +38,8 @@ useEffect(() => {
   firstPage()
 }, [allPokemons]);
 
-const filteredPokemons = allPokemons.slice(currentPage, currentPage + 12);
+//const filteredPokemons = allPokemons.slice(currentPage, currentPage + 12);
+const filteredPokemons= filterPokemon.length > 0 ? filterPokemon : allPokemons.slice(currentPage, currentPage + 12)
 
   return(
     <div>

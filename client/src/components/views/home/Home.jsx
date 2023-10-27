@@ -8,24 +8,25 @@ import { useDispatch, useSelector} from "react-redux"
 /*Componentes */
 import Cards from "../../cards/Cards"
 import Paginado from "../../paginado/Paginado";
+import SearchBar from "../../searchBar/SearchBar";
 import { getPokemons } from "../../../reudx/actions/actions";
 import { all } from "axios";
 
 
 const  Home = () => {
   const dispatch = useDispatch();
-
   let allPokemons = useSelector((state)=>state.allPokemons)
   
-
+  
   useEffect(()=>{
     dispatch(getPokemons())
   },[dispatch])
 
 
+
   return (
     <div >
-      
+      <SearchBar />
       <Paginado />
       
       {/* <Cards 

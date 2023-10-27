@@ -3,7 +3,7 @@
 /* Dependencias */
 import axios from "axios"
 /* Componentes */
-import { CLEAN_DETAIL, GET_POKEMONS, POKEMON_DETAIL, FILTER_ATTACK, ORDER_AZ, FILTER_TYPES, CLEAR_TYPES } from "./action-types";
+import { CLEAN_DETAIL, GET_POKEMONS, GET_POKENAME, GET_TYPES,POKEMON_DETAIL, FILTER_ATTACK, FILTER_ORIGIN, ORDER_AZ, FILTER_TYPES, CLEAR_TYPES } from "./action-types";
 
 
 export const getPokemons = () => {
@@ -13,7 +13,14 @@ export const getPokemons = () => {
         
         return dispatch({type: GET_POKEMONS , payload: data})
     }
+}
 
+export const getPokename = (name)=>{
+    return async function (dispatch){
+        let {data} = await axios(`http://localhost:3001/search?name=${name}`)
+        console.log(data)
+        return dispatch ({ type: GET_POKENAME, payload:data})
+    }
 }
 
 export const pokemonDetail = (id) =>{
@@ -26,6 +33,14 @@ export const pokemonDetail = (id) =>{
 
 export const cleanDetail = ()=>{
     return {type: CLEAN_DETAIL}
+}
+
+export const getTypes =()=>{
+    return async function (dispatch){
+        let {data} = await axios("http://localhost:3001/types")
+
+        return dispatch ({ type: GET_TYPES, payload: data})
+    }
 }
 
 export const filterTypes = (types) =>{
@@ -60,5 +75,11 @@ export const orderAz = (sortType)=>{
           }
     
           return dispatch({ type: ORDER_AZ, payload: sortedPokemons})
+    }
 }
-}
+
+// export const filterOrigin =()=>{
+//     return async function (dispatch){
+//         const {data}= await axios
+//     }
+// }

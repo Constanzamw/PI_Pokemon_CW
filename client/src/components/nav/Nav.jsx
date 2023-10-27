@@ -21,8 +21,11 @@ import { orderAz } from "../../reudx/actions/actions";
 const Nav = () => {
 
   const filterPoke = useSelector((state)=> state.filterPokemon)
+  const typess = useSelector((state)=> state.types)
+
   const location = useLocation();
   const dispatch = useDispatch();
+
   const [paginado,setPaginado]=useState(false)
   const [order, setOrder] = useState(false)
   const [filter, setFilter] = useState(false)
@@ -84,17 +87,7 @@ const Nav = () => {
             onChange={handleFilterTypes} 
           />
           <button onClick={handleClearFilterTypes}> Clear Types </button>
-            {
-              filterPoke.map((poke)=>(
-                <Card 
-                  key={poke?.id}
-                  id={poke?.id}
-                  name={poke?.name}
-                  image={poke?.image} 
-                  types={poke?.types}
-                />
-               ))
-            }
+         
             <p>Sort by:</p>
               <Select
                 name="Sort by"

@@ -24,6 +24,9 @@ const  Detail = () => {
     return ()=> dispatch(cleanDetail())
   },[dispatch,id])
 
+  //esto lo hago porque sino me aparecen los typesjuntos!
+  const formattedTypes = pokemonDetailData?.types ? pokemonDetailData.types.join(', ') : '';
+
   return (
     <div className={style.container}>
       <div>
@@ -36,7 +39,7 @@ const  Detail = () => {
         <div className={style.info}>
 
         <label> Types: </label>
-        <p>{pokemonDetailData?.types}</p> 
+        <p>{formattedTypes}</p> 
 
         <label> Life: </label>
 

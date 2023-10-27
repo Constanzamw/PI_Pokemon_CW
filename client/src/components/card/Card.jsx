@@ -8,15 +8,14 @@ import style from "./Card.module.css"
 import { useSelector } from 'react-redux';
 import { Link } from "react-router-dom"
 
-/*Componentes */
-//import {Home, Detail, Create} from "./components/views"
-
 
 const Card = ({id,name,image,types}) => {
 
   const allPokemons = useSelector((state)=> state.allPokemons)
+  
+  const formattedTypes = types.join(', '); //esto lo hago porque sino me aparecen los typesjuntos!
 
-  const backgroundColorClass = types[0].toLowerCase();
+  const backgroundColorClass = types[0]
   
   return (
     <div className={`${style.container} ${style[backgroundColorClass]}`}>
@@ -31,7 +30,7 @@ const Card = ({id,name,image,types}) => {
     </div>
     <div className={style.bottom}>
       
-      <h2 className={style.types}> {types} </h2>
+      <h2 className={style.types}> {formattedTypes} </h2>
     </div>
   </div>
   
@@ -57,6 +56,6 @@ export default Card;
      </div>
 
 
-
+const backgroundColorClass = types[0].toLowerCase();
 
 */

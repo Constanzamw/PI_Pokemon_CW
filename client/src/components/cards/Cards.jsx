@@ -13,7 +13,7 @@ import Card from "../card/Card"
 
 
 const Cards = ({allPokemons}) => {
-  console.log(allPokemons)
+
   return (
     <div >
     

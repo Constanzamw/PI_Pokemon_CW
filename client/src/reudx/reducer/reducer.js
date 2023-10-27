@@ -1,10 +1,11 @@
 /* eslint-disable no-unused-vars */
-import { CLEAN_DETAIL, GET_POKEMONS, POKEMON_DETAIL, FILTER_TYPES, ORDER_AZ, CLEAR_TYPES } from "../actions/action-types";
+import { CLEAN_DETAIL, GET_POKEMONS, GET_TYPES,POKEMON_DETAIL, FILTER_TYPES, ORDER_AZ, CLEAR_TYPES, GET_POKENAME } from "../actions/action-types";
 
 const initialState ={
     allPokemons: [],
     filterPokemon:[],
-    pokemonDetail:{}
+    pokemonDetail:{},
+    types:[]
 }
 
 
@@ -16,6 +17,12 @@ const reducer = (state = initialState, action) =>{
                 allPokemons: action.payload,
                 
             }
+        case GET_POKENAME:
+            return{
+                ...state,
+                allPokemons:[action.payload],
+            }        
+
         case POKEMON_DETAIL:
             return{
                 ...state,
@@ -26,6 +33,14 @@ const reducer = (state = initialState, action) =>{
                 ...state,
                 pokemonDetail:{}
             }
+        
+        case GET_TYPES:
+            return{
+                ...state,
+                types:action.payload
+            }
+            
+
         case FILTER_TYPES:
             
             return{
