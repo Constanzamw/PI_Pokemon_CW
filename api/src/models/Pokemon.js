@@ -25,7 +25,7 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull:false
       },
-      life:{
+      hitPoints:{
         type: DataTypes.STRING,
         allowNull:false
       },
