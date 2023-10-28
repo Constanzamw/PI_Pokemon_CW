@@ -18,6 +18,7 @@ const  Detail = () => {
   const { id } = useParams();
 
   const pokemonDetailData = useSelector((state)=> state.pokemonDetail)
+ 
 
   useEffect(()=>{
     dispatch(pokemonDetail(id));
@@ -41,9 +42,9 @@ const  Detail = () => {
         <label> Types: </label>
         <p>{formattedTypes}</p> 
 
-        <label> Life: </label>
-
-         <span>{pokemonDetailData?.life}</span>
+        <label> HitPoints: </label>
+        <span>{pokemonDetailData?.hitpoints}</span>
+ 
          <br/><br/>
 
         <label> Attack: </label>

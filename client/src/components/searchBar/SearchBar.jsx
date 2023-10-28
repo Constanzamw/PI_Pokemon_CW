@@ -30,7 +30,7 @@ const SearchBar =() => {
       return;
     }
     try {
-      const response = await dispatch(getPokename(inputValue)); // Realiza la búsqueda por nombre y actualiza el estado global
+      const response = await dispatch(getPokename(inputValue)); //busco por nombre y actualizo el estado global
       
       if (response && response.length > 0) {
         setFilteredPokemons(response); // Actualiza el estado con los resultados de la búsqueda
