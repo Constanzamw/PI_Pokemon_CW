@@ -78,8 +78,50 @@ export const orderAz = (sortType)=>{
     }
 }
 
+export const filterAttack = (minAttack, maxAttack)=>{
+    return async function(dispatch){
+        const response = await axios.get("http://localhost:3001/");
+        const allPokemon = response.data;
+
+        const filteredPokemon = allPokemon.filter((pokemon) => {
+            const attack = pokemon.attack;
+        return attack >= minAttack && attack <= maxAttack;
+    });
+    dispatch({ type: FILTER_ATTACK, payload: filteredPokemon });
+    }
+}
+
+
+
+
+
 // export const filterOrigin =()=>{
 //     return async function (dispatch){
 //         const {data}= await axios
 //     }
 // }
+
+/*
+
+export const filterTypes = (types) =>{
+    return async function (dispatch){
+      const {data} = await axios("http://localhost:3001/")
+      
+        if(types === "all"){
+            return dispatch ({ type: FILTER_TYPES, payload: data})
+        }
+        const pokeFiltered = data.filter(pokemon=> pokemon.types.includes(types))
+        
+         return dispatch ({ type: FILTER_TYPES, payload: pokeFiltered})
+    }
+}
+
+export const filterTypes = (types) => {
+    return async function (dispatch) {
+        const { data } = await axios("http://localhost:3001/");
+
+        dispatch({ type: FILTER_TYPES, payload: data });
+    };
+}
+
+*/

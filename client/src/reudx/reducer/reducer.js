@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { CLEAN_DETAIL, GET_POKEMONS, GET_TYPES,POKEMON_DETAIL, FILTER_TYPES, ORDER_AZ, CLEAR_TYPES, GET_POKENAME } from "../actions/action-types";
+import { CLEAN_DETAIL, GET_POKEMONS, GET_TYPES,POKEMON_DETAIL, FILTER_TYPES, ORDER_AZ, CLEAR_TYPES, GET_POKENAME , FILTER_ATTACK} from "../actions/action-types";
 
 const initialState ={
     allPokemons: [],
@@ -57,6 +57,12 @@ const reducer = (state = initialState, action) =>{
                     ...state,
                     allPokemons: action.payload
 
+                }
+
+            case FILTER_ATTACK:
+                return{
+                    ...state,
+                    allPokemons:action.payload
                 }
        
 
