@@ -11,19 +11,14 @@ module.exports = (sequelize) => {
         allowNull: false,
         unique:true,                     
       },
-      integerId:{
-        type: DataTypes.INTEGER,
-        allowNull: true,
-        unique:true,
-        //primaryKey: true  -->VER
-      },
+      
       name: {
       type: DataTypes.STRING,
       allowNull: false,
       },
       image:{
         type: DataTypes.STRING,
-        allowNull:false
+        allowNull:true
       },
       hitPoints:{
         type: DataTypes.STRING,

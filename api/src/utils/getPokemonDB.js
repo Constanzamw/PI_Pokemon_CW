@@ -3,7 +3,7 @@ const { Pokemon, Type } = require("../db")
 const getPokemonDB = async (id) =>{
 
 let pokemonFound = await Pokemon.findOne({
-    where: { integerId:id },
+    where: { id:id },
     include: [ // metodo seq para asociar otro model!! 
       {
         model: Type,

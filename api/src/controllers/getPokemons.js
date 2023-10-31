@@ -1,5 +1,7 @@
 const axios = require ("axios")
 const getData = require ("../utils/getData")
+const {Pokemon, Type} = require ("../db")
+const getDB = require ("../utils/getDb")
 
 const baseUrl = "https://pokeapi.co/api/v2/pokemon/";
 
@@ -23,7 +25,10 @@ const getPokemons = async () => { // req res
           pokemonResponses.map((response) => getData(response.data))
         );
     
-        return pokemons;
+        const dbPokemons = await Pokemon.findAll({ include: Type})
+        const dbPokemonsFiltered = getDB(dbPokemons)
+        const allPokes = [...dbPokemonsFiltered, ...pokemons]
+        return allPokes;
      
     };
 

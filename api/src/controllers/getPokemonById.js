@@ -9,9 +9,12 @@ const Url = "https://pokeapi.co/api/v2/pokemon";
 
 const getPokemonById = async (id) =>{
 
-  let foundPokemon = await getPokemonDB(id)
-
-  if(!foundPokemon){
+  
+  if (isNaN(id)){
+    let foundPokemon = await getPokemonDB(id)
+    return foundPokemon
+  }
+  
     const newpokemon = await axios
       .get(`${Url}/${id}`)
       .then((response) => response.data)
@@ -19,11 +22,11 @@ const getPokemonById = async (id) =>{
       .catch((error) => {
         console.warn(`Error fetching data: ${error.message}`);
       });
-      foundPokemon = newpokemon;
-    }
+      return newpokemon;
+    
 
-if(!foundPokemon) throw new Error (`There is no pokémon with id: ${id}`)
-return foundPokemon;
+//if(!foundPokemon) throw new Error (`There is no pokémon with id: ${id}`)
+//return foundPokemon;
 };
   
 module.exports = getPokemonById;

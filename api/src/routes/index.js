@@ -14,7 +14,7 @@ const router = Router();
 // Ejemplo: router.use('/auth', authRouter);
 router.get("/", getPokemonsHandler)
 router.get("/search", getPokemonsByNameHandler);
-router.post("/", postPokemonHandler)
+router.post("/create", postPokemonHandler)
 router.get("/types", getTypesHandler)
 router.get("/:id", getPokemonById)
 

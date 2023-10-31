@@ -3,17 +3,17 @@ const {Pokemon, Type} = require("../db")
 const getData = require("../utils/getData");
 const getPokemonDB = require("../utils/getPokemonDB")
 
+
 //const Url = "https://pokeapi.co/api/v2/pokemon";
 
-const postPokemon = async ({id, name,life, image, hitPoints, attack,defense,speed,height,weight,types}) =>{
-    let pokemonFound = await getPokemonDB(id);
-    console.log(id)
+const postPokemon = async ({ name, image, hitPoints, attack,defense,speed,height,weight,types}) =>{
+    //let pokemonFound = await getPokemonDB(id);
+    
       const newPokemon = await Pokemon.create({
-        id,
+       
         name,
         image,
         hitPoints,
-        life,
         attack,
         defense,
         speed,
