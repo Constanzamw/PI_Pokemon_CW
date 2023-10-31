@@ -1,14 +1,15 @@
 /* eslint-disable no-unused-vars */
-import { CLEAN_DETAIL, GET_POKEMONS, GET_TYPES,POKEMON_DETAIL, FILTER_TYPES, ORDER_AZ, CLEAR_TYPES, GET_POKENAME , FILTER_ATTACK} from "../actions/action-types";
+import { CLEAN_DETAIL, GET_POKEMONS,SET_ORIGIN_API,SET_ORIGIN ,SET_ORIGIN_DB,GET_TYPES,POKEMON_DETAIL, CLEAR_SEARCH,FILTER_TYPES, ORDER_AZ, CLEAR_TYPES, GET_POKENAME , FILTER_ATTACK, CREATE_POKEMON} from "../actions/action-types";
 
 const initialState ={
     allPokemons: [],
     filterPokemon:[],
     pokemonDetail:{},
-    types:[]
+    types:[],
+    newPokemons:[],
+    
+
 }
-
-
 const reducer = (state = initialState, action) =>{
     switch(action.type){
         case GET_POKEMONS:
@@ -40,13 +41,12 @@ const reducer = (state = initialState, action) =>{
                 types:action.payload
             }
             
-
         case FILTER_TYPES:
-            
             return{
                 ...state,
                 filterPokemon: action.payload
             }
+
             case CLEAR_TYPES:
                 return {
                     ...state,
@@ -56,7 +56,6 @@ const reducer = (state = initialState, action) =>{
                 return{
                     ...state,
                     allPokemons: action.payload
-
                 }
 
             case FILTER_ATTACK:
@@ -65,7 +64,37 @@ const reducer = (state = initialState, action) =>{
                     allPokemons:action.payload
                 }
        
+            case CREATE_POKEMON:
+                return{
+                    ...state,
+                    newPokemons: action.payload
 
+                }
+            
+                case CLEAR_SEARCH:
+                    return {
+                      ...state,
+                      allPokemons: [], 
+                      filterPokemon: [], 
+                      newPokemons: [], 
+                    };
+
+                    case SET_ORIGIN_DB:
+                        return {
+                          ...state,
+                          allPokemons: action.payload,
+                        }
+                    
+                    case SET_ORIGIN_API:
+                        return {
+                            ...state,
+                            allPokemons: action.payload,
+                        }
+                    case SET_ORIGIN:
+                        return {
+                            ...state,
+                            allPokemons: action.payload,
+                        }
 
 
         default:

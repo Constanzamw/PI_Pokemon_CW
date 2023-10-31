@@ -1,4 +1,6 @@
-/* eslint-disable react/no-unknown-property */
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-undef */
+
 /* eslint-disable no-unused-vars */
 import style from'./Create.module.css';
 // import { UseLocation, Route, Routes  } from "react-router-dom"
@@ -6,13 +8,19 @@ import style from'./Create.module.css';
 import { useState,useEffect  } from 'react';
 import validationsCreate from "../../../Utils/validationsCreate"
 import { Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { clearSearch, createPokemon } from '../../../reudx/actions/actions';
+import { useDispatch } from 'react-redux';
 
 
 
 const  Create = () => {
-  
+  const dispatch = useDispatch();
+  const [created, setCreated] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
+
   const [formData, setFormData] = useState({
-    id:"",
+      id:"",
     name: "",
     image: "",
     hitPoints: "",
@@ -22,8 +30,9 @@ const  Create = () => {
     height: "",
     weight: "",
     type1: "",
-    type2: "",
+   // type2: "",
   });
+  console.log(formData)
   const [errors, setErrors] = useState({})
   const [allFieldsCompleted, setAllFieldsCompleted] = useState(false);
 
@@ -37,23 +46,43 @@ const  Create = () => {
 
   const handleSubmit = (event)=>{
     event.preventDefault();
-    Navigate("/home")
+    dispatch(createPokemon(formData))
+    .then(() => {
+      setCreated(true);
+      setShowAlert(true); // Mostrar la alerta
+      setFormData({ // Limpiar los campos
+        id: "",
+        name: "",
+        image: "",
+        hitPoints: "",
+        attack: "",
+        defense: "",
+        speed: "",
+        height: "",
+        weight: "",
+        type1: "",
+      });
+    })
+    .catch((error) => {
+      console.error(error);
+    });
   }
 
-//   const areAllFieldsCompleted = () => {
-//     const fields = Object.values(formData);
-//     return fields.every((field) => field !== "" && field !== null);
-//   };
+  const areAllFieldsCompleted = () => {
+    const fields = Object.values(formData);
+    return fields.every((field) => field !== "" && field !== null);
+  };
 
-// useEffect(() => {
-//     setAllFieldsCompleted(areAllFieldsCompleted());
-// }, [formData,]);
+useEffect(() => {
+    setAllFieldsCompleted(areAllFieldsCompleted());
+}, [formData,]);
+
 
 
   return (
    <form onSubmit={handleSubmit}>
       <div>
-        <label for="image"> Number</label>
+        <label htmlFor="id"> Number</label>
       </div>
       <div>
         <input 
@@ -69,7 +98,7 @@ const  Create = () => {
       </div>
 
       <div>
-        <label for="name"> Name</label>
+        <label htmlFor="name"> Name</label>
       </div>
       <div>
         <input 
@@ -85,7 +114,7 @@ const  Create = () => {
       </div>
 
       <div>
-        <label for="hitPoints"> HitPoints </label>
+        <label htmlFor="hitPoints"> HitPoints </label>
       </div>
       <div>
         <input 
@@ -101,7 +130,7 @@ const  Create = () => {
       </div>
 
       <div>
-        <label for="attack"> Attack </label>
+        <label htmlFor="attack"> Attack </label>
       </div>
       <div>
         <input 
@@ -117,7 +146,7 @@ const  Create = () => {
       </div>
 
       <div>
-        <label for="defense"> Defense </label>
+        <label htmlFor="defense"> Defense </label>
       </div>
       <div>
         <input 
@@ -133,7 +162,7 @@ const  Create = () => {
       </div>
 
       <div>
-        <label for="speed"> Speed </label>
+        <label htmlFor="speed"> Speed </label>
       </div>
       <div>
         <input 
@@ -149,7 +178,7 @@ const  Create = () => {
       </div>
 
       <div>
-        <label for="height"> Height </label>
+        <label htmlFor="height"> Height </label>
       </div>
       <div>
         <input 
@@ -165,7 +194,22 @@ const  Create = () => {
       </div>
 
       <div>
-        <label for="weight"> Weight </label>
+        <label htmlFor="image"> Image </label>
+      </div>
+      <div>
+        <input 
+          type="text" 
+          key="image" 
+          name="image" 
+          placeholder="image" 
+          value={formData.image} 
+          onChange={handleChange}
+        />
+          <br/>
+        {errors.height ?  <span className={style.error}>{errors.height}</span> : null}
+      </div>
+      <div>
+        <label htmlFor="weight"> Weight </label>
       </div>
       <div>
         <input 
@@ -182,7 +226,7 @@ const  Create = () => {
 
       <div className={style.row}>
         <div className={style.col1}>
-          <label for="type1">Type</label>
+          <label htmlFor="type1">Type</label>
         </div>
         <div className={style.col2}>
           <select id="type1" name="type1" value={formData.type1} onChange={handleChange}>
@@ -210,9 +254,9 @@ const  Create = () => {
           </select>
         </div>
         </div>
-        <div className={style.row}>
+        {/* <div className={style.row}>
           <div className={style.col1}>
-            <label for="type2">Type</label>
+            <label htmlFor="type2">Type</label>
           </div>
           <div className={style.col2}>
             <select id="type2" name="type2" value={formData.type2} onChange={handleChange}>
@@ -239,16 +283,26 @@ const  Create = () => {
               <option value="unknown">unknown</option>
             </select>
           </div>
-        </div>
+        </div> */}
 
-        {/* <div className={style.row}>
+        <div className={style.row}>
           <button 
             type="submit" 
             name="createButton" 
             className={`${style.button} ${allFieldsCompleted ? '' : style.disabledButton}`}
-            disabled={!allFieldsCompleted}> Create</button>
-        </div>  */}
-
+            disabled={!allFieldsCompleted}> Create your Pokemon!</button>
+        </div> 
+    <div>
+      <button>
+        <Link to="/home"> Back </Link>
+      </button>
+    </div>
+    {showAlert && (
+  <div className={style.alert}>
+    <p>Pokémon created successfully!</p>
+    <button onClick={() => setShowAlert(false)}>Close</button>
+  </div>
+)}
    </form>
   );
 }

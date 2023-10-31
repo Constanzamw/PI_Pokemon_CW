@@ -8,6 +8,8 @@
 import { useState,useEffect } from "react";
 import { useSelector, useDispatch  } from "react-redux";
 import { getPokename } from "../../reudx/actions/actions";
+import { clearSearch } from "../../reudx/actions/actions";
+import { Link } from "react-router-dom";
 import Card from "../card/Card";
 
 /*Componentes */
@@ -50,6 +52,14 @@ const SearchBar =() => {
   const handleChange = (event) => {
     setInputValue(event.target.value);
       }
+
+      const HandleClearSearch = () => {
+        setInputValue(''); // Borra el valor del campo de búsqueda
+        setFilteredPokemons([]); // Borra los resultados de la búsqueda
+        setError(''); // Borra cualquier mensaje de error
+        dispatch(clearSearch()); // Dispara la acción para borrar la búsqueda en el estado global si es necesario
+      };
+    
   
   return (
     <div  >
@@ -60,7 +70,8 @@ const SearchBar =() => {
         onChange={handleChange}
       />
       <button onClick={onSearchs}>Search</button>
-     
+      <button onClick={HandleClearSearch}>Clear Search</button>
+ 
     </div>
   );
 }

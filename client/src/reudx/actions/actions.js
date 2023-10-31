@@ -3,7 +3,7 @@
 /* Dependencias */
 import axios from "axios"
 /* Componentes */
-import { CLEAN_DETAIL, GET_POKEMONS, GET_POKENAME, GET_TYPES,POKEMON_DETAIL, FILTER_ATTACK, FILTER_ORIGIN, ORDER_AZ, FILTER_TYPES, CLEAR_TYPES } from "./action-types";
+import { CLEAN_DETAIL, GET_POKEMONS, GET_POKENAME, GET_TYPES,POKEMON_DETAIL, CREATE_POKEMON,FILTER_ATTACK, SET_ORIGIN_DB,SET_ORIGIN_API,SET_ORIGIN , ORDER_AZ, FILTER_TYPES, CLEAR_TYPES, CLEAR_SEARCH } from "./action-types";
 
 
 export const getPokemons = () => {
@@ -44,16 +44,26 @@ export const getTypes =()=>{
 }
 
 export const filterTypes = (types) =>{
-    return async function (dispatch){
-      const {data} = await axios("http://localhost:3001/")
-      
-        if(types === "all"){
-            return dispatch ({ type: FILTER_TYPES, payload: data})
+    return async (dispatch)=>{
+        try {
+            const {data} = await axios("http://localhost:3001/")
+          
+              if(types === "all"){
+                
+                  return dispatch ({ type: FILTER_TYPES, payload: data})
+              }
+              
+              const pokeFiltered = data.filter((pokemon)=> pokemon.types.includes(types))
+              
+               return dispatch ({ type: FILTER_TYPES, payload: pokeFiltered})
+            
+        } catch (error) {
+            console.log(error)
+             //alert(error.message)
+
+          }
+            
         }
-        const pokeFiltered = data.filter(pokemon=> pokemon.types.includes(types))
-        
-         return dispatch ({ type: FILTER_TYPES, payload: pokeFiltered})
-    }
 }
 
 export const clearTypes = () => {
@@ -91,37 +101,53 @@ export const filterAttack = (minAttack, maxAttack)=>{
     }
 }
 
+//BE: router.post("/create", postPokemonHandler)
+export const createPokemon = (formData) => {
+    console.log(formData)
+    return async function (dispatch) {
+      const { data } = await axios.post("http://localhost:3001/create", formData);
+      
+      return dispatch({ type: CREATE_POKEMON, payload: data });
+    };
+  }
 
 
+  export const clearSearch = () => {
+    return {type:CLEAR_SEARCH}
+};
 
+export const filterOrigin = (origin) => {
+    
+    return async function (dispatch) {
+      try {
+        const response = await axios("http://localhost:3001/")
+        const allOrigin = response.data
 
-// export const filterOrigin =()=>{
-//     return async function (dispatch){
-//         const {data}= await axios
-//     }
-// }
+    //     const origin = allOrigin.filter((res)=> res.id == id)
+    //    console.log(origin)
+
+        let originType = [];
+        for(let item of allOrigin){
+            originType.push(item)
+        }
+        //console.log(originType)
+        if(origin==="Database"){
+            const filteredPokemons = originType.filter(origin => isNaN(origin.id));
+            return dispatch({ type: SET_ORIGIN_DB, payload: filteredPokemons })
+        }
+        if(origin === "Api"){
+            const filteredPokemons = originType.filter(origin => !isNaN(origin.id));
+            return dispatch({ type: SET_ORIGIN_API, payload: filteredPokemons })
+        }
+
+       return dispatch({ type: SET_ORIGIN, payload: originType })
+
+      } catch (error) {
+        console.error('Filter failed', error);
+      }
+    };
+  };
 
 /*
-
-export const filterTypes = (types) =>{
-    return async function (dispatch){
-      const {data} = await axios("http://localhost:3001/")
-      
-        if(types === "all"){
-            return dispatch ({ type: FILTER_TYPES, payload: data})
-        }
-        const pokeFiltered = data.filter(pokemon=> pokemon.types.includes(types))
-        
-         return dispatch ({ type: FILTER_TYPES, payload: pokeFiltered})
-    }
-}
-
-export const filterTypes = (types) => {
-    return async function (dispatch) {
-        const { data } = await axios("http://localhost:3001/");
-
-        dispatch({ type: FILTER_TYPES, payload: data });
-    };
-}
 
 */

@@ -16,8 +16,8 @@ import { filterTypes } from "../../reudx/actions/actions";
 import { clearTypes } from "../../reudx/actions/actions";
 import { getTypes } from "../../reudx/actions/actions";
 import { filterAttack } from "../../reudx/actions/actions";
+import { filterOrigin } from "../../reudx/actions/actions";
 import { orderAz } from "../../reudx/actions/actions";
-
 
 
 
@@ -27,7 +27,6 @@ const Nav = () => {
   const types = useSelector((state)=> state.types)
   const dispatch = useDispatch();
   
-
   useEffect(() => {
     dispatch(getTypes());
   }, [dispatch]);
@@ -35,10 +34,10 @@ const Nav = () => {
   const [selectedType, setSelectedType] = useState('all');
   const [filteredPokemon, setFilteredPokemon] = useState([]);
   
-
   const handleFilterTypes =(event)=>{
     const selectedType = event.target.value
-    dispatch(filterTypes(selectedType));
+     dispatch(filterTypes(selectedType));
+
     const filteredPokemon = filterTypes(selectedType);
     setSelectedType(selectedType);
     setFilteredPokemon(filteredPokemon);
@@ -46,43 +45,11 @@ const Nav = () => {
 
   const handleClearFilterTypes = () => {
     dispatch(clearTypes());
-    // setPaginado(true); // Otra lógica que necesites restablecer
-    // setOrder(false);
-    // setFilter(false);
-  };
+   };
 
-
- // const location = useLocation();
+ 
   const filterPoke = useSelector((state)=> state.filterPokemon)
-
-  // const [paginado,setPaginado]=useState(false)
-  // const [order, setOrder] = useState(false)
-  // const [filter, setFilter] = useState(false)
  
- 
-  //   const types = [
-  //     "normal",
-  //     "fighting",
-  //     "flying",
-  //     "poison",
-  //     "ground",
-  //     "rock",
-  //     "bug",
-  //     "ghost",
-  //     "steel",
-  //     "fire",
-  //     "water",
-  //     "grass",
-  //     "electric",
-  //     "psychic",
-  //     "ice",
-  //     "dragon",
-  //     "dark",
-  //     "fairy",
-  //     "unknown",
-  //     "shadow"
-  // ]
-
 
    // filtrado x orden alfabetico
 
@@ -115,18 +82,25 @@ const Nav = () => {
       setSortAttack(selectedSortAttack);
     }
 
+  // filtrado por origin
+  const origin = useSelector((state) => state.origin);
+  console.log("hola",origin)
 
-
+  const handleOriginFilterChange = (event) => {
+    const selectedOrigin = event.target.value;
+    dispatch(filterOrigin(selectedOrigin));
+    
+  };
 
   return (
     <div >
-      <h1> NavBar </h1>
+    
       <div className="select">
         <label>Filter by type: </label> 
         <select value={selectedType} onChange={handleFilterTypes}>
           <option value="all">All</option>
           {types.map((type) => (
-            <option key={type.id} value={type.id}>
+            <option key={type.id} value={type.name}>
               {type.name}
             </option>
           ))}
@@ -150,6 +124,20 @@ const Nav = () => {
         <option value='1'>Strong</option>
         <option value='100'>Weak</option>
       </select>
+      </div>
+      <div>
+      <label>Origin:</label>
+      <select value={origin} onChange={handleOriginFilterChange}>
+        <option value="All">All</option>
+        <option value="Api">API</option>
+        <option value="Database">Database</option>    
+      </select>
+        </div>
+      <div>
+        <button> 
+          <Link to="/create" > Create! </Link>
+          
+        </button>
       </div>
     
     </div>
