@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector} from "react-redux"
 /*Componentes */
 import Cards from "../../cards/Cards"
+import Nav from "../../nav/Nav";
 import Paginado from "../../paginado/Paginado";
 import SearchBar from "../../searchBar/SearchBar";
 import { getPokemons } from "../../../reudx/actions/actions";
@@ -16,18 +17,18 @@ import { all } from "axios";
 const  Home = () => {
   const dispatch = useDispatch();
   let allPokemons = useSelector((state)=>state.allPokemons)
-  
-  
+    console.log(allPokemons.length)
   useEffect(()=>{
-    dispatch(getPokemons())
-  },[dispatch])
-
-
+    if(!allPokemons.length){
+      dispatch(getPokemons())
+    }
+  },[dispatch,allPokemons])
 
   return (
     <div >
-      <SearchBar />
-      <Paginado />
+   
+      <Nav/>
+      <Paginado/>
       
       {/* <Cards 
         allPokemons={allPokemons}

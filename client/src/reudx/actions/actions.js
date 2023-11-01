@@ -3,7 +3,7 @@
 /* Dependencias */
 import axios from "axios"
 /* Componentes */
-import { CLEAN_DETAIL, GET_POKEMONS, GET_POKENAME, GET_TYPES,POKEMON_DETAIL, CREATE_POKEMON,FILTER_ATTACK, SET_ORIGIN_DB,SET_ORIGIN_API,SET_ORIGIN , ORDER_AZ, FILTER_TYPES, CLEAR_TYPES, CLEAR_SEARCH } from "./action-types";
+import { CLEAN_DETAIL, GET_POKEMONS, GET_POKENAME, GET_TYPES,POKEMON_DETAIL, CREATE_POKEMON, CREATE_IMAGE, FILTER_ATTACK, SET_ORIGIN_DB,SET_ORIGIN_API,SET_ORIGIN , ORDER_AZ, FILTER_TYPES, CLEAR_TYPES, CLEAR_SEARCH } from "./action-types";
 
 
 export const getPokemons = () => {
@@ -43,19 +43,22 @@ export const getTypes =()=>{
     }
 }
 
-export const filterTypes = (types) =>{
+export const filterTypes = (selectedType) =>{
     return async (dispatch)=>{
         try {
             const {data} = await axios("http://localhost:3001/")
           
-              if(types === "all"){
+              if(selectedType === "all"){
                 
                   return dispatch ({ type: FILTER_TYPES, payload: data})
+              } else{
+
+                  const pokeFiltered =  data.filter((pokemon)=> pokemon.types.includes(selectedType))
+                  
+                   const holas= dispatch ({ type: FILTER_TYPES, payload: pokeFiltered})
+                   return holas
               }
-              
-              const pokeFiltered = data.filter((pokemon)=> pokemon.types.includes(types))
-              
-               return dispatch ({ type: FILTER_TYPES, payload: pokeFiltered})
+              //console.log("chau")
             
         } catch (error) {
             console.log(error)
@@ -111,6 +114,13 @@ export const createPokemon = (formData) => {
     };
   }
 
+export const createImage = ()=>{
+    return async function(dispatch){
+        const {data} = await axios.get("http://localhost:3001/image")
+
+        return dispatch({ type: CREATE_IMAGE, payload:data})
+    }
+}
 
   export const clearSearch = () => {
     return {type:CLEAR_SEARCH}

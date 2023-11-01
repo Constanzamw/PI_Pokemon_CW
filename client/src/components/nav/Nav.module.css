@@ -1,0 +1,26 @@
+.navbar {
+    background-color: #f2f2f2; /* Fondo grisáceo */
+    position: fixed; /* Fijar la barra de navegación en la parte superior */
+    top: 0; /* Alinear en la parte superior */
+    width: 100%; /* Ancho completo */
+    display: flex; /* Mostrar los elementos en línea (horizontal) */
+    justify-content: space-between; /* Espacio entre los elementos */
+    align-items: center; /* Centrar verticalmente los elementos */
+    padding: 10px 20px; /* Espacio interno (arriba/abajo y izquierda/derecha) */
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2); /* Sombra suave */
+    z-index: 5;
+  }
+  
+  .select {
+    padding: 20 20px;
+  }
+
+  .navbarButton {
+    margin-right: 80px; /* Espacio entre el último filtro y el botón "CREATE" */
+  }
+
+  .logo {
+    width: 100px; /* Ancho deseado */
+    height: 40px; /* Alto deseado */
+    margin-right: 10px; /* Espacio entre la imagen y la barra de navegación */
+  }

@@ -5,9 +5,9 @@ let errores = {};
     const regex2= new RegExp(/^\d+$/);
 
     
-    if (!formData.id) {
-        errores.name= "Your pokemon must have an id higher than 1292";
-    }
+    // if (!formData.id) {
+    //     errores.name= "Your pokemon must have an id higher than 1292";
+    // }
     
     if (!formData.name) {
         errores.name= "Your pokémon must have a name";

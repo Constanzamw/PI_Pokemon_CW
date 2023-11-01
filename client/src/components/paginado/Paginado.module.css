@@ -1,5 +1,26 @@
-.card-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-  }
+.cardContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columnas */
+  grid-gap: 10px; /* Espacio entre las tarjetas */
+}
+
+.paginationButtons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px; /* Espacio entre los botones y las tarjetas */
+}
+
+.paginationButtons button {
+  background-color: #007bff; /* Color de fondo */
+  color: #fff; /* Color del texto */
+  padding: 5px 10px; /* Espacio interno */
+  border: none;
+  margin: 0 5px; /* Espacio entre los botones */
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.paginationButtons button:hover {
+  background-color: #0056b3; /* Cambiar el color de fondo al pasar el mouse */
+}

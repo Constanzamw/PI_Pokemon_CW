@@ -42,8 +42,8 @@ useEffect(() => {
 const filteredPokemons= filterPokemon.length > 0 ? filterPokemon : allPokemons.slice(currentPage, currentPage + 12)
 
   return(
-    <div>
-        <div>
+    <div >
+       <div >
             <button onClick={firstPage}> ⏮ </button>
             <button onClick={prevPage}>  ◀  </button>
             <button onClick={() => handlePageClick(Math.ceil(currentPage / 12 + 1))}>
@@ -53,7 +53,7 @@ const filteredPokemons= filterPokemon.length > 0 ? filterPokemon : allPokemons.s
             <button onClick={nextPage}>  ▶  </button>
             <button onClick={lastPage}>  ⏭ </button>
         </div>
-    <div  className={style.cardContainer} >
+    <div className={style.cardContainer} >
       {
         filteredPokemons.map((pokemon)=>{ // iamgen nombre tipos
           return(

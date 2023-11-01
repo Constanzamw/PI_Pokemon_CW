@@ -9,13 +9,16 @@ import { useState,useEffect  } from 'react';
 import validationsCreate from "../../../Utils/validationsCreate"
 import { Navigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import { clearSearch, createPokemon } from '../../../reudx/actions/actions';
-import { useDispatch } from 'react-redux';
+import { clearSearch, createPokemon, createImage } from '../../../reudx/actions/actions';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 
 const  Create = () => {
   const dispatch = useDispatch();
+  const imgList = useSelector((state) => state.img);
+  const types = useSelector((state) => state.types);
+
   const [created, setCreated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
 
@@ -32,7 +35,7 @@ const  Create = () => {
     type1: "",
    // type2: "",
   });
-  console.log(formData)
+
   const [errors, setErrors] = useState({})
   const [allFieldsCompleted, setAllFieldsCompleted] = useState(false);
 
@@ -46,7 +49,7 @@ const  Create = () => {
 
   const handleSubmit = (event)=>{
     event.preventDefault();
-    dispatch(createPokemon(formData))
+     dispatch(createPokemon(formData))
     .then(() => {
       setCreated(true);
       setShowAlert(true); // Mostrar la alerta
@@ -66,6 +69,7 @@ const  Create = () => {
     .catch((error) => {
       console.error(error);
     });
+  //});
   }
 
   const areAllFieldsCompleted = () => {
@@ -77,7 +81,9 @@ useEffect(() => {
     setAllFieldsCompleted(areAllFieldsCompleted());
 }, [formData,]);
 
-
+useEffect(() => {
+  dispatch(createImage())
+   }, [dispatch]);
 
   return (
    <form onSubmit={handleSubmit}>
@@ -197,16 +203,20 @@ useEffect(() => {
         <label htmlFor="image"> Image </label>
       </div>
       <div>
-        <input 
-          type="text" 
-          key="image" 
-          name="image" 
-          placeholder="image" 
-          value={formData.image} 
-          onChange={handleChange}
-        />
-          <br/>
-        {errors.height ?  <span className={style.error}>{errors.height}</span> : null}
+      <select name="image" value={formData.image} onChange={handleChange}>
+          <option value="">Select an image</option>
+          {imgList && imgList.map((image) => (
+            <option key={image.id} value={image.name}>
+              {image.name}
+            </option>
+          ))}
+        </select>
+        {
+        formData.image && (
+          <img src={formData.image} alt="selected image" />
+        )}
+        <br />
+        {errors.image ? <span className={style.error}>{errors.image}</span> : null}
       </div>
       <div>
         <label htmlFor="weight"> Weight </label>
@@ -229,28 +239,13 @@ useEffect(() => {
           <label htmlFor="type1">Type</label>
         </div>
         <div className={style.col2}>
-          <select id="type1" name="type1" value={formData.type1} onChange={handleChange}>
+        <select id="type1" name="type1" value={formData.type1} onChange={handleChange}>
             <option value="">Select a type</option>
-            <option value="normal">normal</option>
-            <option value="fighting">fighting</option>
-            <option value="flying">flying</option>
-            <option value="poison">poison</option>
-            <option value="ground">ground</option>
-            <option value="rock">rock</option>
-            <option value="bug">bug</option>
-            <option value="ghost">ghost</option>
-            <option value="steel">steel</option>
-            <option value="fire">fire</option>
-            <option value="water">water</option>
-            <option value="grass">grass</option>
-            <option value="electric">electric</option>
-            <option value="psychic">psychic</option>
-            <option value="ice">ice</option>
-            <option value="dragon">dragon</option>
-            <option value="dark">dark</option>
-            <option value="fairy">fairy</option>
-            <option value="shadow">shadow</option>
-            <option value="unknown">unknown</option>
+            {types.map((type) => (
+              <option key={type.id} value={type.id}>
+                {type.name}
+              </option>
+            ))}
           </select>
         </div>
         </div>
@@ -290,7 +285,9 @@ useEffect(() => {
             type="submit" 
             name="createButton" 
             className={`${style.button} ${allFieldsCompleted ? '' : style.disabledButton}`}
-            disabled={!allFieldsCompleted}> Create your Pokemon!</button>
+           // disabled={!allFieldsCompleted}
+            > 
+            Create your Pokemon!</button>
         </div> 
     <div>
       <button>

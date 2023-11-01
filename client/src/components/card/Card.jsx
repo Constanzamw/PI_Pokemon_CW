@@ -20,7 +20,7 @@ const Card = ({id,name,image,types}) => {
   return (
     <div className={`${style.container} ${style[backgroundColorClass]}`}>
       <div className={style.topRight}>
-      <h3 className={style.id}> {id} </h3>
+      
       </div>
       <h1 className={style.name}> {name}</h1>
     <div className={style.imageContainer}>
@@ -57,5 +57,9 @@ export default Card;
 
 
 const backgroundColorClass = types[0].toLowerCase();
+
+
+<h3 className={style.id}> {id} </h3>
+
 
 */
