@@ -3,7 +3,7 @@ const {Type} = require("../db")
 
 const getTypes = async () =>{
 
-  //let types = await Type.findAll();  //db
+  
   let types = []
 
   if(types.length === 0){
@@ -11,7 +11,8 @@ const getTypes = async () =>{
     const apiTypes = response.data.results;
 
     for(let type of apiTypes){
-      await Type.create({name: type.name});
+      const newType = await Type.findOrCreate({where: {name: type.name}});
+      console.log(newType)
     }
 
     types = await Type.findAll() 
@@ -19,8 +20,6 @@ const getTypes = async () =>{
 
    return types;
 
-
- 
 };
 
 

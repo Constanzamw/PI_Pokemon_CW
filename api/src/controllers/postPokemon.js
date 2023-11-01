@@ -1,5 +1,5 @@
 const axios = require ("axios")
-const {Pokemon, Type} = require("../db")
+const {Pokemon, Type, Image} = require("../db")
 const getData = require("../utils/getData");
 const getPokemonDB = require("../utils/getPokemonDB")
 
@@ -32,8 +32,12 @@ const postPokemon = async ({ name, image, hitPoints, attack,defense,speed,height
         await newPokemon.setTypes(typeModels);
       }
       
+      const newImage = await Image.findOne({ where: {name:image}})
+      await newPokemon.addImage(newImage)
+
       return newPokemon;
     
+      
 };
 
 
