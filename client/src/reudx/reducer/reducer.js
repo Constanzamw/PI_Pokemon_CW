@@ -4,7 +4,7 @@ import { CLEAN_DETAIL, GET_POKEMONS,SET_ORIGIN_API,SET_ORIGIN ,SET_ORIGIN_DB,GET
 const initialState ={
     allPokemons: [],
     filterPokemon:[],
-    pokemonDetail:{},
+    pokemonDetail:{}, //{}
     types:[],
     newPokemons:[],
     img:[],    
@@ -81,9 +81,7 @@ const reducer = (state = initialState, action) =>{
                 case CLEAR_SEARCH:
                     return {
                       ...state,
-                  
-                      filterPokemon: [], 
-                      newPokemons: [], 
+                     allPokemons:[]
                     };
 
                     case SET_ORIGIN_DB:

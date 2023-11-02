@@ -26,7 +26,9 @@ const  Detail = () => {
   },[dispatch,id])
 
   //esto lo hago porque sino me aparecen los typesjuntos!
-  const formattedTypes = pokemonDetailData?.types ? pokemonDetailData.types.join(', ') : '';
+  const formattedTypes = pokemonDetailData?.types 
+    ? pokemonDetailData.types.join(', ') 
+    : '';
 
   return (
     <div className={style.container}>

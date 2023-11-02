@@ -81,11 +81,12 @@ const Nav = () => {
   // filtrado por origin
   const [selectedOrigin, setSelectedOrigin] = useState('All');
 
-  const origin = useSelector((state) => state.origin);
+  const originPoke = useSelector((state) => state.allPokemons);
   //console.log("hola",origin)
 
   const handleOriginFilterChange = (event) => {
     const selectedOrigin = event.target.value;
+    //setSelectedOrigin(selectedOrigin);
     dispatch(filterOrigin(selectedOrigin));
     
   };
@@ -126,7 +127,7 @@ const Nav = () => {
       </div>
       <div>
       <label className={style.select}>Origin:</label>
-      <select value={origin} onChange={handleOriginFilterChange}>
+      <select value={selectedOrigin} onChange={handleOriginFilterChange}>
         <option value="All">All</option>
         <option value="Api">API</option>
         <option value="Database">Database</option>    

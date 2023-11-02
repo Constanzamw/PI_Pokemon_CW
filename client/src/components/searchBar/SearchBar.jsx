@@ -12,9 +12,6 @@ import { clearSearch } from "../../reudx/actions/actions";
 import { Link } from "react-router-dom";
 import Card from "../card/Card";
 
-/*Componentes */
-//import Button from "../button/Button"
-
 
 const SearchBar =() => {
     
@@ -55,8 +52,6 @@ const SearchBar =() => {
 
       const HandleClearSearch = () => {
         setInputValue(''); // Borra el valor del campo de búsqueda
-        setFilteredPokemons([]); // Borra los resultados de la búsqueda
-        setError(''); // Borra cualquier mensaje de error
         dispatch(clearSearch()); // Dispara la acción para borrar la búsqueda en el estado global si es necesario
       };
     

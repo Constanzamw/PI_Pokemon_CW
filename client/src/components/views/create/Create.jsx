@@ -23,7 +23,7 @@ const  Create = () => {
   const [showAlert, setShowAlert] = useState(false);
 
   const [formData, setFormData] = useState({
-      id:"",
+     // id:"",
     name: "",
     image: "",
     hitPoints: "",
@@ -32,7 +32,7 @@ const  Create = () => {
     speed: "",
     height: "",
     weight: "",
-    type1: "",
+    type: [],
    // type2: "",
   });
 
@@ -54,7 +54,7 @@ const  Create = () => {
       setCreated(true);
       setShowAlert(true); // Mostrar la alerta
       setFormData({ // Limpiar los campos
-        id: "",
+        //id: "",
         name: "",
         image: "",
         hitPoints: "",
@@ -63,8 +63,9 @@ const  Create = () => {
         speed: "",
         height: "",
         weight: "",
-        type1: "",
+        types: [],
       });
+      window.location.reload(); // Recarga la página VER SI ES VALIDO
     })
     .catch((error) => {
       console.error(error);
@@ -236,10 +237,10 @@ useEffect(() => {
 
       <div className={style.row}>
         <div className={style.col1}>
-          <label htmlFor="type1">Type</label>
+          <label htmlFor="types">Type</label>
         </div>
         <div className={style.col2}>
-        <select id="type1" name="type1" value={formData.type1} onChange={handleChange}>
+        <select id="types" name="types" value={formData.types} onChange={handleChange}>
             <option value="">Select a type</option>
             {types.map((type) => (
               <option key={type.id} value={type.id}>
@@ -249,55 +250,24 @@ useEffect(() => {
           </select>
         </div>
         </div>
-        {/* <div className={style.row}>
-          <div className={style.col1}>
-            <label htmlFor="type2">Type</label>
-          </div>
-          <div className={style.col2}>
-            <select id="type2" name="type2" value={formData.type2} onChange={handleChange}>
-              <option value="">Select a type</option>
-              <option value="normal">normal</option>
-              <option value="fighting">fighting</option>
-              <option value="flying">flying</option>
-              <option value="poison">poison</option>
-              <option value="ground">ground</option>
-              <option value="rock">rock</option>
-              <option value="bug">bug</option>
-              <option value="ghost">ghost</option>
-              <option value="steel">steel</option>
-              <option value="fire">fire</option>
-              <option value="water">water</option>
-              <option value="grass">grass</option>
-              <option value="electric">electric</option>
-              <option value="psychic">psychic</option>
-              <option value="ice">ice</option>
-              <option value="dragon">dragon</option>
-              <option value="dark">dark</option>
-              <option value="fairy">fairy</option>
-              <option value="shadow">shadow</option>
-              <option value="unknown">unknown</option>
-            </select>
-          </div>
-        </div> */}
-
-        <div className={style.row}>
+       <div className={style.row}>
           <button 
             type="submit" 
             name="createButton" 
             className={`${style.button} ${allFieldsCompleted ? '' : style.disabledButton}`}
-           // disabled={!allFieldsCompleted}
+           disabled={!allFieldsCompleted}
             > 
             Create your Pokemon!</button>
         </div> 
     <div>
       <button>
-        <Link to="/home"> Back </Link>
+        <Link to="/home"> Home </Link>
       </button>
     </div>
     {showAlert && (
   <div className={style.alert}>
     <p>Pokémon created successfully!</p>
-    <button onClick={() => setShowAlert(false)}>Close</button>
+    
   </div>
 )}
    </form>
