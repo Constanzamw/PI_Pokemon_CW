@@ -13,7 +13,6 @@ import { clearSearch, createPokemon, createImage } from '../../../reudx/actions/
 import { useDispatch, useSelector } from 'react-redux';
 
 
-
 const  Create = () => {
   const dispatch = useDispatch();
   const imgList = useSelector((state) => state.img);
@@ -32,14 +31,22 @@ const  Create = () => {
     speed: "",
     height: "",
     weight: "",
-    type: [],
+    types: [],
    // type2: "",
   });
-
+console.log(formData)
   const [errors, setErrors] = useState({})
   const [allFieldsCompleted, setAllFieldsCompleted] = useState(false);
 
   const handleChange= (event) =>{
+    if(event.target.name === "types") {
+    
+      setFormData({
+        ...formData,
+        types: [...formData.types,event.target.value]
+      })
+      return
+    }
     setFormData({
       ...formData,
       [event.target.name]: event.target.value
@@ -243,7 +250,7 @@ useEffect(() => {
         <select id="types" name="types" value={formData.types} onChange={handleChange}>
             <option value="">Select a type</option>
             {types.map((type) => (
-              <option key={type.id} value={type.id}>
+              <option key={type.id} value={type.name}>
                 {type.name}
               </option>
             ))}

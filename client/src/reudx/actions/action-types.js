@@ -1,5 +1,6 @@
 export const GET_POKEMONS = "GET_POKEMONS";
 export const GET_POKENAME = "GET_POKENAME";
+export const GET_POKEID = "GET_POKEID"
 
 export const POKEMON_DETAIL = "POKEMON_DETAIL";
 export const CLEAN_DETAIL = "CLEAN_DETAIL";

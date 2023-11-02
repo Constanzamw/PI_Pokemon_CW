@@ -44,8 +44,8 @@ const  Detail = () => {
         <label> Types: </label>
         <p>{formattedTypes}</p> 
 
-        <label> HitPoints: </label>
-        <span>{pokemonDetailData?.hitpoints}</span>
+        <label> HP: </label>
+        <span>{pokemonDetailData?.hitPoints}</span>
  
          <br/><br/>
 

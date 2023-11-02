@@ -3,7 +3,7 @@
 /* Dependencias */
 import axios from "axios"
 /* Componentes */
-import { CLEAN_DETAIL, GET_POKEMONS, GET_POKENAME, GET_TYPES,POKEMON_DETAIL, CREATE_POKEMON, CREATE_IMAGE, FILTER_ATTACK, SET_ORIGIN_DB,SET_ORIGIN_API,SET_ORIGIN , ORDER_AZ, FILTER_TYPES, CLEAR_TYPES, CLEAR_SEARCH } from "./action-types";
+import { CLEAN_DETAIL, GET_POKEMONS, GET_POKENAME, GET_TYPES,POKEMON_DETAIL, CREATE_POKEMON, CREATE_IMAGE, FILTER_ATTACK, SET_ORIGIN_DB,SET_ORIGIN_API,SET_ORIGIN , ORDER_AZ, FILTER_TYPES, CLEAR_TYPES, CLEAR_SEARCH, GET_POKEID } from "./action-types";
 
 
 export const getPokemons = () => {
@@ -22,6 +22,15 @@ export const getPokename = (name)=>{
         return dispatch ({ type: GET_POKENAME, payload:data})
     }
 }
+
+export const getPokeById = (id)=>{
+    return async function (dispatch){
+        let {data} = await axios(`http://localhost:3001/searchId?id=${id}`)
+        
+        return dispatch ({ type: GET_POKEID, payload:data})
+    }
+}
+
 
 export const pokemonDetail = (id) =>{
     return async function (dispatch){
@@ -133,9 +142,7 @@ export const filterOrigin = (origin) => {
         const response = await axios("http://localhost:3001/")
         const allOrigin = response.data
 
-    //     const origin = allOrigin.filter((res)=> res.id == id)
-    //    console.log(origin)
-
+    
         let originType = [];
         for(let item of allOrigin){
             originType.push(item)
