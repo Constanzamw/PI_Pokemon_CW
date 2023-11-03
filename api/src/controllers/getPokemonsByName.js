@@ -10,6 +10,7 @@ const Url = "https://pokeapi.co/api/v2/pokemon";
 const getPokemonsByName = async (name)=>{
 
     let pokeFound = await Pokemon.findOne({
+     
         where: { 
             name : {
               [Op.iLike]: `%${name}%`, // x lo de mayus o minusc
@@ -22,9 +23,9 @@ const getPokemonsByName = async (name)=>{
             },
           ],
     });
-
-    if(!pokeFound){    
-        const newpokemon = await axios
+    console.log(pokeFound)
+    if(!pokeFound){  
+         const newpokemon = await axios
           .get(`${Url}/${name}`)
           .then((response) => response.data)
           .then((data) => getData(data))
