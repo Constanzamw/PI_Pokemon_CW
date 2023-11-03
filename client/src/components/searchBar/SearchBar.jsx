@@ -7,7 +7,7 @@
 /*Dependencias */
 import { useState,useEffect } from "react";
 import { useSelector, useDispatch  } from "react-redux";
-import { getPokename, getPokeById } from "../../reudx/actions/actions";
+import { getPokename,  } from "../../reudx/actions/actions";
 import { clearSearch } from "../../reudx/actions/actions";
 import { Link } from "react-router-dom";
 import Card from "../card/Card";
@@ -25,40 +25,21 @@ const SearchBar =() => {
 
 
   const onSearchs = async () => {
-    if (searchType === "name") {
+ 
       if (parseInt(inputValue)) {
         setError("Invalid name");
         return;
     }
-
-    try {
-      const response = await dispatch(getPokename(inputValue)); //busco por nombre y actualizo el estado global
-      
-      if (response && response.length > 0) {
-        setFilteredPokemons(response); // Actualiza el estado con los resultados de la búsqueda
-      } else {
-        setError("Pokemon not found");
-      }
-    } catch (error) {
-      setError("Search failed");
-    } 
-  }else if (searchType === "id") {
-    if (isNaN(inputValue) || inputValue <= 0) {
-      setError("Invalid ID");
-      return;
-    }
-    try {
-      const response = await dispatch(getPokeById(inputValue)); // busca por ID y actualiza el estado global
-
-      if (response) {
-        setFilteredPokemons([response]); // Actualiza el estado con el resultado de la búsqueda
-      } else {
-        setError("Pokemon not found");
-      }
-    } catch (error) {
-      setError("Search failed");
-    }
-  }
+  
+      dispatch(getPokename(inputValue)); //busco por nombre y actualizo el estado global
+     
+      // if (response && response.length > 0) {
+      //   setFilteredPokemons(response); 
+      // } else {
+      //   setError("Pokemon not found");
+      // }
+    
+  
 };
 
 const handleChange = (event) => {
@@ -81,18 +62,7 @@ const HandleClearSearch = () => {
       />
       <button onClick={onSearchs}>Search</button>
       <button onClick={HandleClearSearch}>Clear Search</button>
-      <div>
-        <label>
-          Search by:
-          <select
-            value={searchType}
-            onChange={(e) => setSearchType(e.target.value)}
-          >
-            <option value="name">Name</option>
-            <option value="id">ID</option>
-          </select>
-        </label>
-      </div>
+      
     </div>
   );
 }

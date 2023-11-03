@@ -13,8 +13,16 @@ const Card = ({id,name,image,types}) => {
 
   const allPokemons = useSelector((state)=> state.allPokemons)
   
-  const formattedTypes = types.join(', '); //esto lo hago porque sino me aparecen los typesjuntos!
-
+  const typeArray = ()=>{
+    let pokeTypes=[]
+    for (let type of types){
+      pokeTypes.push(type.name)
+    }
+     
+  return pokeTypes.join(', ')
+        }
+    
+  const formattedTypes = typeof( types[0])=="string" ? types.join(', ') : typeArray()
   const backgroundColorClass = types[0]
   
   return (

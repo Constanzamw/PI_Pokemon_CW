@@ -17,3 +17,9 @@
     text-align: center;
     max-width: 400px;
 }
+
+.background{
+  background-image: url("../../../assets/fondoPokembola.jpg"); 
+  background-size: cover; /* Ajusta el tamaño de la imagen de fondo según tus preferencias */
+  background-position: center;
+}

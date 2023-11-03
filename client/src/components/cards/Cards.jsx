@@ -6,11 +6,8 @@ import './Cards.module.css';
 
 /*Dependencias */
 //import { UseLocation, Route, Routes  } from "react-router-dom"
-
-
 /*Componentes */
 import Card from "../card/Card"
-
 
 const Cards = ({allPokemons}) => {
 
@@ -29,7 +26,7 @@ const Cards = ({allPokemons}) => {
               name={pokemon?.name}
               image={pokemon?.image} 
               types={pokemon?.types}
-
+              
             />
           )
         })

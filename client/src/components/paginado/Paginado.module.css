@@ -1,7 +1,8 @@
 .cardContainer {
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* 4 columnas */
-  grid-gap: 10px; /* Espacio entre las tarjetas */
+  grid-gap: 20px; /* Espacio entre las tarjetas */
+  
 }
 
 .paginationButtons {

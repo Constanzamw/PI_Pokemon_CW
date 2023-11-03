@@ -1,0 +1,16 @@
+.container {
+    margin-top: 75px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Ajusta esto según tu necesidad */
+    padding: 30px; /* Espacio alrededor del contenido */
+   
+  }
+
+  .background{
+    background-image: url("../../../assets/PokemonStadium.png"); 
+    background-size: cover; /* Ajusta el tamaño de la imagen de fondo según tus preferencias */
+    background-position: center;
+  }

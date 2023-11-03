@@ -31,6 +31,7 @@ const  Detail = () => {
     : '';
 
   return (
+    <div className={style.background}>
     <div className={style.container}>
       <div>
       <button>
@@ -70,6 +71,7 @@ const  Detail = () => {
       </div>
       </div>
       </div>
+    </div>
     </div>
   );
 }

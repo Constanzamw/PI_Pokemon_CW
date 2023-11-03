@@ -18,17 +18,7 @@ import Card from "../src/components/card/Card";
 const App = () => {
     const location = useLocation()
 
-    // const elementsPerPage = 12;
-    // const [currentPage, SetCurrentPage] = useState(1)
-
-    // const startIndex = (currentPage - 1) * elementsPerPage;
-    // const endIndex = startIndex + elementsPerPage;
-    // const currentElement = data.slice(startIndex, endIndex); // VER DATA
-    // const totalPages = Math.ceil(data.length / elementsPerPage)
-
-    // function pageHandler(pageNumber){
-    //   SetCurrentPage(pageNumber)
-    // }
+    
 
   return (
     <div>

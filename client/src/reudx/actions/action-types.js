@@ -10,6 +10,7 @@ export const FILTER_TYPES = "FILTER_TYPES";
 export const CLEAR_TYPES = "CLEAR_TYPES";
 
 export const ORDER_AZ = "ORDER_AZ";
+export const ORDER_FN = "ORDER_FN"
 
 export const SET_ORIGIN_DB = "SET_ORIGIN_DB";
 export const SET_ORIGIN_API = "SET_ORIGIN_API";
