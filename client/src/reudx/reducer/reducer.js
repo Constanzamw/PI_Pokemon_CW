@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-case-declarations */
 /* eslint-disable no-unused-vars */
-import { CLEAN_DETAIL, GET_POKEMONS,SET_ORIGIN_API,SET_ORIGIN ,SET_ORIGIN_DB,GET_TYPES,POKEMON_DETAIL, CLEAR_SEARCH,FILTER_TYPES, ORDER_AZ, CLEAR_TYPES, GET_POKENAME , FILTER_ATTACK, CREATE_POKEMON, CREATE_IMAGE, GET_POKEID, ORDER_FN} from "../actions/action-types";
+import { CLEAN_DETAIL, GET_POKEMONS,SET_ORIGIN_API,SET_ORIGIN ,SET_ORIGIN_DB,GET_TYPES,POKEMON_DETAIL, CLEAR_SEARCH,FILTER_TYPES, ORDER_AZ, CLEAR_TYPES, GET_POKENAME , FILTER_ATTACK, CREATE_POKEMON, CREATE_IMAGE, GET_POKEID, ORDER_FN, LOG_IN_SUCCESS, LOG_IN_FAILURE, LOG_OUT, CREATE_USER_SUCCESS, CREATE_USER_FAILURE} from "../actions/action-types";
 
 const initialState ={
     allPokemons: [],
@@ -10,8 +10,10 @@ const initialState ={
     types:[],
     newPokemons:[],
     img:[],  
-    order:[]
-
+    order:[],
+    user: null,
+    error:null,
+    access: false,
 }
 
 
@@ -124,6 +126,36 @@ const reducer = (state = initialState, action) =>{
             return {
                 ...state,
                 filterPokemon: action.payload,
+            }
+
+        case CREATE_USER_SUCCESS:
+            return{
+                ...state,
+                error:null
+            }
+        case CREATE_USER_FAILURE:
+            return{
+                ...state,
+                error: action.error
+            }
+
+        case LOG_IN_SUCCESS:
+            return{
+                ...state,
+                user: action.payload,
+                acces: true,
+                error:null
+            }
+        case LOG_IN_FAILURE:
+            return{
+                ...state,
+                error: action.error,
+            }
+        case LOG_OUT:
+            return{
+                ...state,
+                acces:false,
+                user:null
             }
 
 

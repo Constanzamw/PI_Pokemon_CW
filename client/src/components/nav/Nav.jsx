@@ -8,7 +8,8 @@ import style from'./Nav.module.css';
 import {  useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
 /*Componentes */
 import Select from "../../Utils/Select";
 import { filterTypes, orderFn } from "../../reudx/actions/actions";
@@ -17,6 +18,7 @@ import { getTypes } from "../../reudx/actions/actions";
 import { filterAttack } from "../../reudx/actions/actions";
 import { filterOrigin } from "../../reudx/actions/actions";
 import { orderAz } from "../../reudx/actions/actions";
+import { logOut } from '../../reudx/actions/actions';
 import Logo from "../../assets/Logo.png"
 import SearchBar from '../searchBar/SearchBar';
 
@@ -84,9 +86,16 @@ const Nav = () => {
     //const selectedOrigin = event.target.value;
     setSelectedOrigin(event.target.value);
     dispatch(filterOrigin(event.target.value));
-
-    
   };
+
+  const user = useSelector((state)=> state.user)
+  const navigate = useNavigate();
+
+  const handleLogOut = () => {
+    dispatch(logOut());
+    navigate("/");
+  };
+
 
   return (
     <div className={style.navbar}>
@@ -134,7 +143,12 @@ const Nav = () => {
         <button> 
           <Link to="/create" > Create! </Link>
         </button>
-      
+      </div>
+      <div>
+      {user ? (
+        <button onClick={handleLogOut}>Log Out</button>
+      ) : null}   
+
       </div>
     
     </div>

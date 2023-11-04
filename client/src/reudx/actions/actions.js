@@ -3,7 +3,7 @@
 /* Dependencias */
 import axios from "axios"
 /* Componentes */
-import { CLEAN_DETAIL, GET_POKEMONS, GET_POKENAME, GET_TYPES,POKEMON_DETAIL, CREATE_POKEMON, CREATE_IMAGE, FILTER_ATTACK, SET_ORIGIN_DB,SET_ORIGIN_API,SET_ORIGIN , ORDER_AZ, FILTER_TYPES, CLEAR_TYPES, CLEAR_SEARCH, ORDER_FN } from "./action-types";
+import { CLEAN_DETAIL, GET_POKEMONS, GET_POKENAME, GET_TYPES,POKEMON_DETAIL, CREATE_POKEMON, CREATE_IMAGE, FILTER_ATTACK, SET_ORIGIN_DB,SET_ORIGIN_API,SET_ORIGIN , ORDER_AZ, FILTER_TYPES, CLEAR_TYPES, CLEAR_SEARCH, ORDER_FN, CREATE_USER_SUCCESS, CREATE_USER_FAILURE, LOG_IN_FAILURE, LOG_IN_SUCCESS, LOG_OUT } from "./action-types";
 
 
 export const getPokemons = () => {
@@ -24,7 +24,7 @@ export const getPokename = (name)=>{
 }
 
 
-export const pokemonDetail = (id) =>{
+export const pokemonDetail = (id) => {
     return async function (dispatch){
         let {data} = await axios(`http://localhost:3001/${id}`)
 
@@ -63,11 +63,8 @@ export const filterTypes = (selectedType) =>{
             
         } catch (error) {
             console.log(error)
-             //alert(error.message)
-
           }
-            
-        }
+    }
 }
 
 export const clearTypes = () => {
@@ -76,7 +73,6 @@ export const clearTypes = () => {
 
 export const orderAz = (sortType)=>{ 
      return ({ type: ORDER_AZ, payload: sortType})
-    
 }
 
 export const orderFn =()=>{
@@ -91,7 +87,7 @@ export const filterAttack = (minAttack, maxAttack)=>{
         const filteredPokemon = allPokemon.filter((pokemon) => {
             const attack = pokemon.attack;
         return attack >= minAttack && attack <= maxAttack;
-    });
+         });
     dispatch({ type: FILTER_ATTACK, payload: filteredPokemon });
     }
 }
@@ -114,7 +110,7 @@ export const createImage = ()=>{
     }
 }
 
-  export const clearSearch = () => {
+export const clearSearch = () => {
     return {type:CLEAR_SEARCH}
 };
 
@@ -148,6 +144,34 @@ export const filterOrigin = (origin) => {
     };
   };
 
-/*
+export const createUser= (userData) => {
+    const { email, password } = userData;
+    return async function(dispatch){
+        try {
+            const { data } = await axios.post("http://localhost:3001/createUser", { email, password });
+            return dispatch({ type: CREATE_USER_SUCCESS, payload: data });
+          } catch (error) {
+            return dispatch({ type: CREATE_USER_FAILURE, payload: error.response.data.errorMessage });
+          }  
 
-*/
+    }
+}
+
+export const login = (userData)=>{
+    const { email, password } = userData;
+    return async function(dispatch){
+        try {
+            // Realiza una solicitud POST para enviar datos de inicio de sesión al servidor
+            const { data } = await axios.post("http://localhost:3001/login", { email, password });
+            
+            dispatch({ type: LOG_IN_SUCCESS, payload: data });
+          } catch (error) {
+            dispatch({ type: LOG_IN_FAILURE, payload: error.response.data.errorMessage });
+          }
+
+    }
+}
+
+export const logOut = () => {
+    return {type: LOG_OUT }
+};

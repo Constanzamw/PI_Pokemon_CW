@@ -23,3 +23,10 @@ export const CREATE_IMAGE = "CREATE_IMAGE"
 
 export const CLEAR_SEARCH = "CLEAR_SEARCH";
 
+export const CREATE_USER_SUCCESS = "CREATE_USER";
+export const CREATE_USER_FAILURE = "CREATE_USER_FAILURE"
+
+export const LOG_IN_SUCCESS = "LOG_IN_SUCCESS"
+export const LOG_IN_FAILURE = "LOG_IN_FAILURE"
+export const LOG_OUT = "LOG_OUT"
+
