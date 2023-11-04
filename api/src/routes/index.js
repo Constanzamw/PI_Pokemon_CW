@@ -5,19 +5,20 @@ const getPokemonsByNameHandler = require("../handlers/getPokemonsByNameHandler")
 const postPokemonHandler = require("../handlers/postPokemonHandler")
 const getTypesHandler = require("../handlers/getTypesHandler");
 const ImageHandler = require('../handlers/imageHandler');
-const getPokeIdHandler = require('../handlers/searchPokeIdHandler');
+const createUserHandler = require('../handlers/userHandlers/createUserHandler');
+const loginHandler = require ("../handlers/userHandlers/loginHandler")
 
-
-// Ejemplo: const authRouter = require('./auth.js');
 
 
 const router = Router();
 
-// Configurar los routers
-// Ejemplo: router.use('/auth', authRouter);
+//Users
+router.post("/createUser", createUserHandler)
+router.post("/login", loginHandler)
+
+//Pokemons
 router.get("/", getPokemonsHandler)
 router.get("/search", getPokemonsByNameHandler);
-router.get("/searchId", getPokeIdHandler);
 router.post("/create", postPokemonHandler)
 router.get("/types", getTypesHandler)
 router.get("/image", ImageHandler)
