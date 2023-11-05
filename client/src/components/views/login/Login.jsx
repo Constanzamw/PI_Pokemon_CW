@@ -120,7 +120,7 @@ const FormLogin = () => {
                     onChange = {handleChange}  
                 />
             {errors.password && <p className={style.errors}>{errors.password} </p> }
-            <br/><br/> 
+            <br/><br/>
         </div> 
         <div className={style.botones}>
         <button type="submit" className={style.boton1}> Register </button> 
