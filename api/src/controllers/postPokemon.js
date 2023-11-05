@@ -7,7 +7,7 @@ const getPokemonDB = require("../utils/getPokemonDB")
 //const Url = "https://pokeapi.co/api/v2/pokemon";
 
 const postPokemon = async ({ name, image, hitPoints, attack,defense,speed,height,weight,types}) =>{
-    //let pokemonFound = await getPokemonDB(id);
+    
     
       const [newPokemon, created] = await Pokemon.findOrCreate({ where:{name},defaults:{
             image,

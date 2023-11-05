@@ -12,7 +12,7 @@ const getTypes = async () =>{
 
     for(let type of apiTypes){
       const newType = await Type.findOrCreate({where: {name: type.name}});
-      console.log(newType)
+     
     }
 
     types = await Type.findAll() 

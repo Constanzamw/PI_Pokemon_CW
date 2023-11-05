@@ -23,7 +23,7 @@ const getPokemonsByName = async (name)=>{
             },
           ],
     });
-    console.log(pokeFound)
+    
     if(!pokeFound){  
          const newpokemon = await axios
           .get(`${Url}/${name}`)
