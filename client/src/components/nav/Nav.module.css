@@ -8,7 +8,7 @@
     align-items: center; /* Centrar verticalmente los elementos */
     padding: 10px 20px; /* Espacio interno (arriba/abajo y izquierda/derecha) */
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2); /* Sombra suave */
-    z-index: 10;
+    z-index: 100;
   }
   
   .select {

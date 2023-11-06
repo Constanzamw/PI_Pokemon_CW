@@ -5,14 +5,17 @@
 import style from "./Card.module.css"
 
 /*Dependencias */
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { useState } from "react";
 import { Link } from "react-router-dom"
+//import { addFav, deleteFav } from "../../reudx/actions/actions";
 
 
 const Card = ({id,name,image,types}) => {
-
+  const dispatch = useDispatch();
   const allPokemons = useSelector((state)=> state.allPokemons)
   
+
   const typeArray = ()=>{
     let pokeTypes=[]
     for (let type of types){
@@ -25,11 +28,37 @@ const Card = ({id,name,image,types}) => {
   const formattedTypes = typeof( types[0])=="string" ? types.join(', ') : typeArray()
   const backgroundColorClass = types[0]
   
+
+  // let favorites = useSelector ((state)=> state.allFavorites)
+  // const  [isFav, setIsFav] = useState(false)
+
+  // const handleFavorite = ()=>{
+  //   if(isFav){
+  //     setIsFav(false);
+  //     dispatch(deleteFav(id))
+  //  } else{
+  //     setIsFav(true);
+  //     dispatch(addFav(id)) //
+  //  }
+  // }
+
+
+
+
   return (
     <div className={`${style.container} ${style[backgroundColorClass]}`}>
       <div className={style.topRight}>
-      
       </div>
+      {/* <div className={style.favButton} >
+         {
+            isFav ? (
+               <button  onClick={handleFavorite}>❤️</button>
+            ) : (
+               <button onClick={handleFavorite}>🤍</button>
+            )
+         }
+         </div> */}
+
       <h1 className={style.name}> {name}</h1>
     <div className={style.imageContainer}>
       <Link to={`/detail/${id}`}>

@@ -10,6 +10,7 @@ import { useLocation, Route, Routes  } from "react-router-dom"
 /*Componentes */
 import {Home,Detail, Create, Landing, Login} from "./components/views"
 import Nav from './components/nav/Nav';
+//import Favorites from './components/views/favorites/Favorites';
 
 
 
@@ -29,6 +30,7 @@ const App = () => {
         < Route path= "/home" element ={ <Home /> } />
         < Route path= "/detail/:id" element ={ <Detail /> } />
         < Route path= "/create" element ={ <Create /> } />
+        
 
       </Routes>
     </div>
@@ -37,3 +39,7 @@ const App = () => {
 
 export default App;
 
+/*
+< Route path= "/favorites" element ={ <Favorites /> } />
+
+*/

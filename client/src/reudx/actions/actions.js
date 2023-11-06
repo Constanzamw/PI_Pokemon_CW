@@ -3,7 +3,7 @@
 /* Dependencias */
 import axios from "axios"
 /* Componentes */
-import { CLEAN_DETAIL, GET_POKEMONS, GET_POKENAME, GET_TYPES,POKEMON_DETAIL, CREATE_POKEMON, CREATE_IMAGE, FILTER_ATTACK, SET_ORIGIN_DB,SET_ORIGIN_API,SET_ORIGIN , ORDER_AZ, FILTER_TYPES, CLEAR_TYPES, CLEAR_SEARCH, ORDER_FN, CREATE_USER_SUCCESS, CREATE_USER_FAILURE, LOG_IN_FAILURE, LOG_IN_SUCCESS, LOG_OUT } from "./action-types";
+import { CLEAN_DETAIL, GET_POKEMONS, GET_POKENAME, GET_TYPES,POKEMON_DETAIL, CREATE_POKEMON, CREATE_IMAGE, FILTER_ATTACK, SET_ORIGIN_DB,SET_ORIGIN_API,SET_ORIGIN , ORDER_AZ, FILTER_TYPES, CLEAR_TYPES, CLEAR_SEARCH, ORDER_FN, CREATE_USER_SUCCESS, CREATE_USER_FAILURE, LOG_IN_FAILURE, LOG_IN_SUCCESS, LOG_OUT, ADD_FAV, DELETE_FAV } from "./action-types";
 
 
 export const getPokemons = () => {
@@ -175,3 +175,24 @@ export const login = (userData)=>{
 export const logOut = () => {
     return {type: LOG_OUT }
 };
+
+
+// export const addFav = (pokemon)=>{
+//     //console.log(id)
+//     return async(dispatch)=>{
+//     try {
+//         const {data} = await axios.post("http://localhost:3001/postfav", pokemon)
+      
+//         return dispatch({ type: ADD_FAV, payload: data})
+//        // return {type:ADD_FAV, payload: id}
+//     }catch (error) {
+//         throw Error (error.message)
+//     } 
+// }}
+
+// export const deleteFav = (id, userId)=>{
+//     return async(dispatch)=>{
+//         const {data} = await axios.post("http://localhost:3001/deletefav")
+//         return dispatch({ type: DELETE_FAV , payload: data})
+//     }
+// }

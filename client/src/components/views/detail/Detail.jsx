@@ -31,8 +31,8 @@ const  Detail = () => {
     : '';
 
   return (
-    <div className={style.background}>
-    <div className={style.container}>
+    
+      <div className={style.container}>
       <div>
       <button>
         <Link to="/home" > X </Link>
@@ -72,7 +72,7 @@ const  Detail = () => {
       </div>
       </div>
     </div>
-    </div>
+    
   );
 }
 

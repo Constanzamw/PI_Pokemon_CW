@@ -1,0 +1,47 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra horizontalmente */
+    justify-content: center; /* Centra verticalmente */
+    height: 100vh; 
+    background-color: blueviolet;
+}
+
+
+.text{
+    font-size: x-large;
+    font-weight: bold;
+    color: black ;
+}
+
+.home{
+    font-family: 'Coda', sans-serif;
+    
+    color: #128494;
+    border: solid 1px #ff5722; 
+    border-radius: 15px 15px 15px 15px;
+   margin: 80px;
+    background-color: #ecfeff; 
+    box-shadow: inset 0 0 5px #ee8727;
+    cursor: pointer;
+    
+}
+
+  
+  .home:hover {
+    background-color: #a3c2e2; /* Color de fondo al pasar el mouse (hover) */
+  }
+
+.button{
+    font-family: 'Coda', sans-serif;
+    font-weight: bold;
+    color: #128494;
+    border: solid 1px #ff5722; 
+    border-radius: 15px 15px 15px 15px;
+    height: 3em;
+    width: 7em;
+    background-color: #ecfeff; 
+    box-shadow: inset 0 0 5px #ee8727;
+    cursor: pointer;
+    margin-top: 50px;
+}

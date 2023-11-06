@@ -30,3 +30,6 @@ export const LOG_IN_SUCCESS = "LOG_IN_SUCCESS"
 export const LOG_IN_FAILURE = "LOG_IN_FAILURE"
 export const LOG_OUT = "LOG_OUT"
 
+export const ADD_FAV = "ADD_FAV"
+export const DELETE_FAV = "DELETE_FAV"
+

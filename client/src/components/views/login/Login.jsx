@@ -66,6 +66,7 @@ const FormLogin = () => {
     register === false ?
     <form onSubmit={handleSubmit} >
       <div className={style.container} >
+      <p className={style.title} > LOGIN </p>
         <div className={style.email}>
                 <label htmlFor="emalil"> Email: </label>
                 <input 
@@ -92,12 +93,13 @@ const FormLogin = () => {
         </div>   
         </div>     
         <button type="submit" disabled={ userData.email==="" || userData.password==="" || errors.email || errors.password }> LOGIN </button>
-        <div  className={style.divCreate}>
-        <span className={style.span}> Create your account to enter the pokemon world! </span>
-        <button className={style.register} onClick={registerOn}> REGISTER HERE</button>
+        <div >
+        <span > Create your account to enter the pokemon world! </span>
+        <button  onClick={registerOn}> REGISTER HERE</button>
         </div>
         </form>
         : <form onSubmit={registerHandler}>
+        <div >
         <div className={style.email}>
             <label htmlFor="emalil"> Email: </label>
                 <input 
@@ -125,7 +127,8 @@ const FormLogin = () => {
         <div className={style.botones}>
         <button type="submit" className={style.boton1}> Register </button> 
         {/* <button className={style.boton} onClick={backLogin}>Login</button> */}
-        </div>  
+        </div> 
+        </div> 
              
         </form>    
        

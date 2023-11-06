@@ -95,7 +95,9 @@ useEffect(() => {
 
   return (
    <form onSubmit={handleSubmit}>
-      <div>
+    
+    <div className={style.container}>
+      {/* <div>
         <label htmlFor="id"> Number</label>
       </div>
       <div>
@@ -109,10 +111,10 @@ useEffect(() => {
         />
           <br/>
         {errors.id ?  <span className={style.error}>{errors.id}</span> : null}
-      </div>
+      </div> */}
 
       <div>
-        <label htmlFor="name"> Name</label>
+        <label className={style.text} htmlFor="name"> Name</label>
       </div>
       <div>
         <input 
@@ -128,7 +130,7 @@ useEffect(() => {
       </div>
 
       <div>
-        <label htmlFor="hitPoints"> HitPoints </label>
+        <label className={style.text} htmlFor="hitPoints"> HitPoints </label>
       </div>
       <div>
         <input 
@@ -144,7 +146,7 @@ useEffect(() => {
       </div>
 
       <div>
-        <label htmlFor="attack"> Attack </label>
+        <label className={style.text} htmlFor="attack"> Attack </label>
       </div>
       <div>
         <input 
@@ -160,7 +162,7 @@ useEffect(() => {
       </div>
 
       <div>
-        <label htmlFor="defense"> Defense </label>
+        <label className={style.text} htmlFor="defense"> Defense </label>
       </div>
       <div>
         <input 
@@ -176,7 +178,7 @@ useEffect(() => {
       </div>
 
       <div>
-        <label htmlFor="speed"> Speed </label>
+        <label className={style.text} htmlFor="speed"> Speed </label>
       </div>
       <div>
         <input 
@@ -192,7 +194,7 @@ useEffect(() => {
       </div>
 
       <div>
-        <label htmlFor="height"> Height </label>
+        <label className={style.text} htmlFor="height"> Height </label>
       </div>
       <div>
         <input 
@@ -208,7 +210,7 @@ useEffect(() => {
       </div>
 
       <div>
-        <label htmlFor="image"> Image </label>
+        <label className={style.text} htmlFor="image"> Image </label>
       </div>
       <div>
       <select name="image" value={formData.image} onChange={handleChange}>
@@ -227,7 +229,7 @@ useEffect(() => {
         {errors.image ? <span className={style.error}>{errors.image}</span> : null}
       </div>
       <div>
-        <label htmlFor="weight"> Weight </label>
+        <label className={style.text} htmlFor="weight"> Weight </label>
       </div>
       <div>
         <input 
@@ -242,13 +244,13 @@ useEffect(() => {
         {errors.weight ?  <span className={style.error}>{errors.weight}</span> : null}
       </div>
 
-      <div className={style.row}>
-        <div className={style.col1}>
-          <label htmlFor="types">Type</label>
+      <div >
+        <div >
+          <label className={style.text} htmlFor="types">Type</label>
         </div>
-        <div className={style.col2}>
+        <div >
         <select id="types" name="types" value={formData.types} onChange={handleChange}>
-            <option value="">Select a type</option>
+            <option  value="">Select a type</option>
             {types.map((type) => (
               <option key={type.id} value={type.name}>
                 {type.name}
@@ -257,7 +259,7 @@ useEffect(() => {
           </select>
         </div>
         </div>
-       <div className={style.row}>
+       <div >
           <button 
             type="submit" 
             name="createButton" 
@@ -267,7 +269,7 @@ useEffect(() => {
             Create your Pokemon!</button>
         </div> 
     <div>
-      <button>
+      <button className={style.home}>
         <Link to="/home"> Home </Link>
       </button>
     </div>
@@ -277,7 +279,9 @@ useEffect(() => {
     
   </div>
 )}
+</div>
    </form>
+   
   );
 }
 

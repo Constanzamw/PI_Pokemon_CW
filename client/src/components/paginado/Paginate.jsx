@@ -49,7 +49,7 @@ const Paginate=()=>{
    
 
     return(
-        <div>
+        <div >
        
     <div className={style.cardContainer} >
       {
@@ -67,9 +67,9 @@ const Paginate=()=>{
           )
         })
       }
-        <button onClick={previousHandler}> Previous page </button>
+        <button className={style.paginationButtons} onClick={previousHandler}> Previous page </button>
             <span> Page {current +1} from {totalPages}</span>
-        <button onClick={nextHandler}> Next page</button>
+        <button className={style.paginationButtons} onClick={nextHandler}> Next page</button>
         </div>
     
     </div>

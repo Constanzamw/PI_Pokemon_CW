@@ -10,7 +10,9 @@
   }
 
   .background{
-    background-image: url("../../../assets/PokemonStadium.png"); 
+    background-image: url("../../../assets/pokes.jpg"); 
     background-size: cover; /* Ajusta el tamaño de la imagen de fondo según tus preferencias */
-    background-position: center;
-  }
+    background-position: cover;
+  } 
+
+
