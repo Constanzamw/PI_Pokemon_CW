@@ -3,7 +3,7 @@
 /* Dependencias */
 import axios from "axios"
 /* Componentes */
-import { CLEAN_DETAIL, GET_POKEMONS, GET_POKENAME, GET_TYPES,POKEMON_DETAIL, CREATE_POKEMON, CREATE_IMAGE, FILTER_ATTACK, SET_ORIGIN_DB,SET_ORIGIN_API,SET_ORIGIN , ORDER_AZ, FILTER_TYPES, CLEAR_TYPES, CLEAR_SEARCH, ORDER_FN, CREATE_USER_SUCCESS, CREATE_USER_FAILURE, LOG_IN_FAILURE, LOG_IN_SUCCESS, LOG_OUT, ADD_FAV, DELETE_FAV } from "./action-types";
+import { CLEAN_DETAIL, GET_POKEMONS, GET_POKENAME, GET_TYPES,POKEMON_DETAIL, CREATE_POKEMON, CREATE_IMAGE, FILTER_ATTACK, SET_ORIGIN_DB,SET_ORIGIN_API,SET_ORIGIN , ORDER_AZ, FILTER_TYPES, CLEAR_TYPES, CLEAR_SEARCH, ORDER_FN, CREATE_USER_SUCCESS, CREATE_USER_FAILURE, LOG_IN_FAILURE, LOG_IN_SUCCESS, LOG_OUT,ORDER_ATT  } from "./action-types";
 
 
 export const getPokemons = () => {
@@ -59,7 +59,7 @@ export const filterTypes = (selectedType) =>{
                    const holas= dispatch ({ type: FILTER_TYPES, payload: pokeFiltered})
                    return holas
               }
-              //console.log("chau")
+              
             
         } catch (error) {
             console.log(error)
@@ -90,6 +90,10 @@ export const filterAttack = (minAttack, maxAttack)=>{
          });
     dispatch({ type: FILTER_ATTACK, payload: filteredPokemon });
     }
+}
+
+export const orderAtt = (sortAttack)=>{
+    return ({ type: ORDER_ATT, payload: sortAttack})
 }
 
 //BE: router.post("/create", postPokemonHandler)
@@ -161,7 +165,7 @@ export const login = (userData)=>{
     const { email, password } = userData;
     return async function(dispatch){
         try {
-            // Realiza una solicitud POST para enviar datos de inicio de sesión al servidor
+            
             const { data } = await axios.post("http://localhost:3001/login", { email, password });
             
             dispatch({ type: LOG_IN_SUCCESS, payload: data });

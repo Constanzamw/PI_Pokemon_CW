@@ -6,7 +6,7 @@ import './App.css';
 
 /*Dependencias */
 import { useLocation, Route, Routes  } from "react-router-dom"
-
+import { useState } from 'react';
 /*Componentes */
 import {Home,Detail, Create, Landing, Login} from "./components/views"
 import Nav from './components/nav/Nav';

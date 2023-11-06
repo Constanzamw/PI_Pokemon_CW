@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-case-declarations */
 /* eslint-disable no-unused-vars */
-import { CLEAN_DETAIL, GET_POKEMONS,SET_ORIGIN_API,SET_ORIGIN ,SET_ORIGIN_DB,GET_TYPES,POKEMON_DETAIL, CLEAR_SEARCH,FILTER_TYPES, ORDER_AZ, CLEAR_TYPES, GET_POKENAME , FILTER_ATTACK, CREATE_POKEMON, CREATE_IMAGE, GET_POKEID, ORDER_FN, LOG_IN_SUCCESS, LOG_IN_FAILURE, LOG_OUT, CREATE_USER_SUCCESS, CREATE_USER_FAILURE, } from "../actions/action-types";
+import { CLEAN_DETAIL, GET_POKEMONS,SET_ORIGIN_API,SET_ORIGIN ,SET_ORIGIN_DB,GET_TYPES,POKEMON_DETAIL, CLEAR_SEARCH,FILTER_TYPES, ORDER_AZ, CLEAR_TYPES, GET_POKENAME , FILTER_ATTACK, CREATE_POKEMON, CREATE_IMAGE, GET_POKEID, ORDER_FN, LOG_IN_SUCCESS, LOG_IN_FAILURE, LOG_OUT, CREATE_USER_SUCCESS, CREATE_USER_FAILURE, ORDER_ATT, } from "../actions/action-types";
 
 const initialState ={
     allPokemons: [],
@@ -90,10 +90,29 @@ const reducer = (state = initialState, action) =>{
             }
 
         case FILTER_ATTACK:
+            
             return{
                 ...state,
                 filterPokemon:action.payload
             }
+
+        case ORDER_ATT:
+            const orderAttack = {
+                "A-Z": (a, b) => a.name.localeCompare(b.name),
+                "Z-A": (a, b) => b.name.localeCompare(a.name),
+            };
+
+            let orderedAttack= state.filterPokemon 
+            
+            if (orderAttack[state.order]) {
+                orderedAttack = state.filterPokemon.sort(orderAttack[state.order]) 
+                
+            }
+
+            return{
+                ...state,
+                filterPokemon:orderedAttack
+            }    
        
         case CREATE_POKEMON:
             return{

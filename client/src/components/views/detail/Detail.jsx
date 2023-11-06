@@ -5,7 +5,7 @@
 import style from "./Detail.module.css";
 /* Dependencias */
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams,Link } from 'react-router-dom';
 
 /* Componentes */
@@ -30,6 +30,8 @@ const  Detail = () => {
     ? pokemonDetailData.types.join(', ') 
     : '';
 
+  
+
   return (
     
       <div className={style.container}>
@@ -42,31 +44,31 @@ const  Detail = () => {
         <h1>{pokemonDetailData?.name}</h1>   
         <div className={style.info}>
 
-        <label> Types: </label>
+        <label className={style.name}> Types: </label>
         <p>{formattedTypes}</p> 
 
-        <label> HP: </label>
+        <label className={style.name}> HP: </label>
         <span>{pokemonDetailData?.hitPoints}</span>
  
          <br/><br/>
 
-        <label> Attack: </label>
+        <label className={style.name}> Attack: </label>
         <span>{pokemonDetailData?.attack}</span>
         <br/><br/>
 
-        <label> Defense: </label>
+        <label className={style.name}> Defense: </label>
         <span>{pokemonDetailData?.defense}</span>
         <br/><br/>
 
-        <label> Speed: </label>
+        <label className={style.name}> Speed: </label>
         <span>{pokemonDetailData?.speed}</span> 
         <br/><br/>
 
-        <label> Height: </label>
+        <label className={style.name}> Height: </label>
         <span>{pokemonDetailData?.height}</span>
         <br/><br/>
         
-        <label> Weight: </label>
+        <label className={style.name}> Weight: </label>
         <span>{pokemonDetailData?.weight}</span>
       </div>
       </div>

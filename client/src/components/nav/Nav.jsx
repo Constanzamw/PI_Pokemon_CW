@@ -101,9 +101,7 @@ const Nav = () => {
     <div className={style.navbar}>
       <img src={Logo} alt="Logo" className={style.logo} />
       <SearchBar />
-      <button> 
-       <Link to="/favorites" > FAV! </Link>
-      </button>
+    
       <div className={style.select}>
         <label>Filter by type: </label> 
         <select value={selectedType} onChange={handleFilterTypes}>

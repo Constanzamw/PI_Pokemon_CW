@@ -72,7 +72,7 @@ console.log(formData)
         weight: "",
         types: [],
       });
-      window.location.reload(); // Recarga la página VER SI ES VALIDO
+      //window.location.reload(); // Recarga la página VER SI ES VALIDO
     })
     .catch((error) => {
       console.error(error);

@@ -33,3 +33,5 @@ export const LOG_OUT = "LOG_OUT"
 export const ADD_FAV = "ADD_FAV"
 export const DELETE_FAV = "DELETE_FAV"
 
+export const ORDER_ATT ="ORDER_ATT"
+

@@ -6,31 +6,24 @@
  
 }
 
-.paginationButtons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 10px; /* Espacio entre los botones y las tarjetas */
-}
 
-.paginationButtons{
-  background-color: rgb(78, 139, 204); /* Color de fondo */
-  color: #fff; /* Color del texto */
-  padding: 5px 10px; /* Espacio interno */
+
+.paginationButtons {
+  background-color: rgb(78, 139, 204);
+  color: #fff;
+  padding: 5px 10px;
   border: none;
-  margin: 0 5px; /* Espacio entre los botones */
+  margin: 0 5px;
   cursor: pointer;
   border-radius: 5px;
+  width: 120px; /* Ancho fijo para los botones */
+  text-align: center; /* Centra el texto horizontalmente */
+  white-space: nowrap; /* Evita que el texto se desborde en el botón */
 }
 
 .paginationButtons:hover {
-  
   background: #6dc2f3;
-    color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 0 5px #9dfaea,
-      0 0 25px #db4205,
-      0 0 50px #db4205,
-      0 0 100px #db4205;
+  color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 0 5px #9dfaea, 0 0 25px #db4205, 0 0 50px #db4205, 0 0 100px #db4205;
 }
-

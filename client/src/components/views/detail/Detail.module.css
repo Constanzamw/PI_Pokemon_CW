@@ -20,4 +20,9 @@
     text-align: center;
    
 }
+.name{
+  font-size: larger;
+  font-weight: bolder;
+  font-style: oblique;
+}
 
