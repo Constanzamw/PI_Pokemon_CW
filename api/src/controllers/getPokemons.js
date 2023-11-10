@@ -5,7 +5,7 @@ const getDB = require ("../utils/getDb")
 
 const baseUrl = "https://pokeapi.co/api/v2/pokemon/";
 
-const getPokemons = async () => { // req res 
+const getPokemons = async () => { 
 
       
         let allPokemons = [];

@@ -10,7 +10,7 @@ const postPokemon = async ({ name, image, hitPoints, attack,defense,speed,height
     
     
       const [newPokemon, created] = await Pokemon.findOrCreate({ where:{name},defaults:{
-            image,
+          image,
           hitPoints,
           attack,
           defense,

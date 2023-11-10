@@ -14,7 +14,9 @@ const getData = async (data) => {
     const speedStat = await data.stats.find(stat => stat.stat.name === "speed");
     const speedPoints = speedStat.base_stat;
 
-    let image = await data.sprites.other.home.front_default
+    //let image = await data.sprites.other.home.front_default
+    let image = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${data.id}.png`
+    //https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${data.id}.png
     if(image === null) {
       image = await data.sprites.other["official-artwork"].front_default
     }

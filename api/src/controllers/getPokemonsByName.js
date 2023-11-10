@@ -1,6 +1,6 @@
 const axios = require ("axios")
 const getData = require("../utils/getData");
-const getPokemonDB = require("../utils/getPokemonDB")
+//const getPokemonDB = require("../utils/getPokemonDB")
 const { Pokemon, Type } = require("../db")
 const { Op } = require("sequelize");
 
@@ -13,7 +13,7 @@ const getPokemonsByName = async (name)=>{
      
         where: { 
             name : {
-              [Op.iLike]: `%${name}%`, // x lo de mayus o minusc
+              [Op.iLike]: `%${name}%`, // insensible a mayus o minusc
             },
           },
           include: [

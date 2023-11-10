@@ -7,7 +7,8 @@ const getImage=async()=>{
 
     for(const dataImg of result){
         const pokemonInfo = await axios.get(dataImg.url)
-        const imageUrl = pokemonInfo.data.sprites.front_default // url de la imagen del poke
+        //const imageUrl = pokemonInfo.data.sprites.front_default // url de la imagen del poke
+        const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokemonInfo.id}.png` 
 
         const response = await Image.findAll({where: {name:imageUrl} });
 

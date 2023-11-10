@@ -1,6 +1,6 @@
 const axios = require ("axios")
 const getData = require("../utils/getData");
-//const getPokemonDB = require("../utils/getPokemonDB")
+
 const {Pokemon, Type, Image} = require ("../db")
 
 
@@ -28,14 +28,7 @@ const getPokemonById = async (id) =>{
     return newPokemon[0];
   }
 
-  
-  // if (isNaN(id)){
-  //   let foundPokemon = await getPokemonDB(id)
-
-  // return foundPokemon
-  // }
-
-  
+ 
       const newpokemons = await axios
       .get(`${Url}/${id}`)
       .then((response) => response.data)
@@ -48,8 +41,6 @@ const getPokemonById = async (id) =>{
       return newpokemons;
     
 
-//if(!foundPokemon) throw new Error (`There is no pokémon with id: ${id}`)
-//return foundPokemon;
 };
   
 module.exports = getPokemonById;
