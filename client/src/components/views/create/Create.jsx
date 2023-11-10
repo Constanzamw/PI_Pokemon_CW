@@ -22,7 +22,7 @@ const  Create = () => {
   const [showAlert, setShowAlert] = useState(false);
 
   const [formData, setFormData] = useState({
-     // id:"",
+     
     name: "",
     image: "",
     hitPoints: "",
@@ -32,9 +32,9 @@ const  Create = () => {
     height: "",
     weight: "",
     types: [],
-   // type2: "",
+  
   });
-console.log(formData)
+
   const [errors, setErrors] = useState({})
   const [allFieldsCompleted, setAllFieldsCompleted] = useState(false);
 
@@ -59,9 +59,9 @@ console.log(formData)
      dispatch(createPokemon(formData))
     .then(() => {
       setCreated(true);
-      setShowAlert(true); // Mostrar la alerta
+      setShowAlert(true); 
       setFormData({ // Limpiar los campos
-        //id: "",
+       
         name: "",
         image: "",
         hitPoints: "",
@@ -77,7 +77,7 @@ console.log(formData)
     .catch((error) => {
       console.error(error);
     });
-  //});
+  
   }
 
   const areAllFieldsCompleted = () => {
@@ -97,27 +97,14 @@ useEffect(() => {
    <form onSubmit={handleSubmit}>
     
     <div className={style.container}>
-      {/* <div>
-        <label htmlFor="id"> Number</label>
-      </div>
-      <div>
-        <input 
-          type="number" 
-          key="id" 
-          name="id" 
-          placeholder="Choose a number" 
-          value={formData.id} 
-          onChange={handleChange}
-        />
-          <br/>
-        {errors.id ?  <span className={style.error}>{errors.id}</span> : null}
-      </div> */}
+ 
 
       <div>
         <label className={style.text} htmlFor="name"> Name</label>
       </div>
       <div>
         <input 
+        autoComplete='off'
           type="text" 
           key="name" 
           name="name" 

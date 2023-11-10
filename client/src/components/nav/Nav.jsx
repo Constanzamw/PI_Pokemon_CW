@@ -55,8 +55,7 @@ const Nav = () => {
    const [sortType, setSortType] = useState("default")
 
    const handleSortPokemons = (event) => {
-      //const selectedSortType = event.target.value;
-      //setSortType(selectedSortType);
+    
       dispatch(orderAz(event.target.value));
       dispatch(orderFn())
       setSortType(event.target.value); 
@@ -83,7 +82,7 @@ const Nav = () => {
  const originPoke = useSelector((state) => state.allPokemons);
  
   const handleOriginFilterChange = (event) => {
-    //const selectedOrigin = event.target.value;
+   
     setSelectedOrigin(event.target.value);
     dispatch(filterOrigin(event.target.value));
   };

@@ -29,36 +29,11 @@ const Card = ({id,name,image,types}) => {
   const backgroundColorClass = types[0]
   
 
-  // let favorites = useSelector ((state)=> state.allFavorites)
-  // const  [isFav, setIsFav] = useState(false)
-
-  // const handleFavorite = ()=>{
-  //   if(isFav){
-  //     setIsFav(false);
-  //     dispatch(deleteFav(id))
-  //  } else{
-  //     setIsFav(true);
-  //     dispatch(addFav(id)) //
-  //  }
-  // }
-
-
-
-
   return (
     <div className={`${style.container} ${style[backgroundColorClass]}`}>
       <div className={style.topRight}>
       </div>
-      {/* <div className={style.favButton} >
-         {
-            isFav ? (
-               <button  onClick={handleFavorite}>❤️</button>
-            ) : (
-               <button onClick={handleFavorite}>🤍</button>
-            )
-         }
-         </div> */}
-
+    
       <h1 className={style.name}> {name}</h1>
     <div className={style.imageContainer}>
       <Link to={`/detail/${id}`}>
@@ -75,28 +50,3 @@ const Card = ({id,name,image,types}) => {
 }
 
 export default Card;
-
-/*
-
-  <div className={style.container} >
-      
-      <h3 className={style.id}> {id} </h3>  
-      <div className={style.imageContainer}>
-        <Link to={`/detail/${id}`}>
-         <img className={style.image} src={image} alt={name} />
-        </Link>  
-      </div>   
-      
-      <h1 className={style.name}> {name}</h1> 
-      <h2 className={style.types}> {types} </h2> 
-      
-     </div>
-
-
-const backgroundColorClass = types[0].toLowerCase();
-
-
-<h3 className={style.id}> {id} </h3>
-
-
-*/

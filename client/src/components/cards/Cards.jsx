@@ -39,21 +39,3 @@ const Cards = ({allPokemons}) => {
 
 export default Cards;
 
-/*
-const renderCards = () =>{
-  const arr = pokemon.slice(selector *12 - 12, selector * 12);
-  return arr.map(({id, name, image, types}) =>{
-    return <DriverCard
-    key={id},
-    id={id},
-    name={name},
-    image={image},
-    types={types}
-    />
-    
-  })
-}
-
-
-
-*/

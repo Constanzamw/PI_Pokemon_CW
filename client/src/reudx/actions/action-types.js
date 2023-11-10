@@ -15,7 +15,7 @@ export const ORDER_FN = "ORDER_FN"
 export const SET_ORIGIN_DB = "SET_ORIGIN_DB";
 export const SET_ORIGIN_API = "SET_ORIGIN_API";
 export const SET_ORIGIN = "SET_ORIGIN"
-
+export const ORDER_ATT ="ORDER_ATT"
 export const FILTER_ATTACK = "FILTER_ATTACK";
 
 export const CREATE_POKEMON = "CREATE_POKEMON"
@@ -30,8 +30,5 @@ export const LOG_IN_SUCCESS = "LOG_IN_SUCCESS"
 export const LOG_IN_FAILURE = "LOG_IN_FAILURE"
 export const LOG_OUT = "LOG_OUT"
 
-export const ADD_FAV = "ADD_FAV"
-export const DELETE_FAV = "DELETE_FAV"
 
-export const ORDER_ATT ="ORDER_ATT"
 

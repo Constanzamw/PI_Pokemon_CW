@@ -17,12 +17,16 @@ export const getPokemons = () => {
 
 export const getPokename = (name)=>{
     return async function (dispatch){
-        let {data} = await axios(`http://localhost:3001/search?name=${name}`)
-       console.log(data)
-        return dispatch ({ type: GET_POKENAME, payload:data})
+        try {
+            let {data} = await axios(`http://localhost:3001/search?name=${name}`)
+           
+            return dispatch ({ type: GET_POKENAME, payload:data})
+            
+        } catch (error) {
+            alert("Pokemon does not exist")
+        }
     }
 }
-
 
 export const pokemonDetail = (id) => {
     return async function (dispatch){
@@ -98,7 +102,7 @@ export const orderAtt = (sortAttack)=>{
 
 //BE: router.post("/create", postPokemonHandler)
 export const createPokemon = (formData) => {
-    console.log(formData)
+    
     return async function (dispatch) {
       const { data } = await axios.post("http://localhost:3001/create", formData);
       
@@ -181,22 +185,3 @@ export const logOut = () => {
 };
 
 
-// export const addFav = (pokemon)=>{
-//     //console.log(id)
-//     return async(dispatch)=>{
-//     try {
-//         const {data} = await axios.post("http://localhost:3001/postfav", pokemon)
-      
-//         return dispatch({ type: ADD_FAV, payload: data})
-//        // return {type:ADD_FAV, payload: id}
-//     }catch (error) {
-//         throw Error (error.message)
-//     } 
-// }}
-
-// export const deleteFav = (id, userId)=>{
-//     return async(dispatch)=>{
-//         const {data} = await axios.post("http://localhost:3001/deletefav")
-//         return dispatch({ type: DELETE_FAV , payload: data})
-//     }
-// }

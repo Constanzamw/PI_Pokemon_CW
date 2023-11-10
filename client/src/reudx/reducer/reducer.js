@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-case-declarations */
 /* eslint-disable no-unused-vars */
-import { CLEAN_DETAIL, GET_POKEMONS,SET_ORIGIN_API,SET_ORIGIN ,SET_ORIGIN_DB,GET_TYPES,POKEMON_DETAIL, CLEAR_SEARCH,FILTER_TYPES, ORDER_AZ, CLEAR_TYPES, GET_POKENAME , FILTER_ATTACK, CREATE_POKEMON, CREATE_IMAGE, GET_POKEID, ORDER_FN, LOG_IN_SUCCESS, LOG_IN_FAILURE, LOG_OUT, CREATE_USER_SUCCESS, CREATE_USER_FAILURE, ORDER_ATT, } from "../actions/action-types";
+import { CLEAN_DETAIL, GET_POKEMONS,SET_ORIGIN_API,SET_ORIGIN ,SET_ORIGIN_DB,GET_TYPES,POKEMON_DETAIL, CLEAR_SEARCH,FILTER_TYPES, ORDER_AZ, CLEAR_TYPES, GET_POKENAME , FILTER_ATTACK, CREATE_POKEMON, CREATE_IMAGE, ORDER_FN, LOG_IN_SUCCESS, LOG_IN_FAILURE, LOG_OUT, CREATE_USER_SUCCESS, CREATE_USER_FAILURE, ORDER_ATT, } from "../actions/action-types";
 
 const initialState ={
     allPokemons: [],
@@ -14,8 +14,7 @@ const initialState ={
     user: null,
     error:null,
     access: false,
-    myFavorites: [],
-    allFavorites:[], //copia
+    
 }
 
 
@@ -112,7 +111,9 @@ const reducer = (state = initialState, action) =>{
             return{
                 ...state,
                 filterPokemon:orderedAttack
-            }    
+            }   
+            
+            //corregir filtro combinando api + types + strong - hacer un nuevo case
        
         case CREATE_POKEMON:
             return{
@@ -133,6 +134,7 @@ const reducer = (state = initialState, action) =>{
             };
 
         case SET_ORIGIN_DB:
+            
             return {
                 ...state,
                 filterPokemon: action.payload,

@@ -68,7 +68,7 @@ const Paginate=()=>{
         })
       }
       
-        <button className={style.paginationButtons} onClick={previousHandler}> Previous page </button>
+        <button className={style.paginationButtons} onClick={previousHandler} > Previous page </button>
             <span> Page {current +1} from {totalPages}</span>
         <button className={style.paginationButtons} onClick={nextHandler}> Next page</button>
         </div>
